@@ -3,17 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum EstadosMovimiento{
-    quieto,
-
-    caminando,
-    
-    saltando,
-
-    Retrocediendo,
-
-    agachado
-}
 
 public class JugadorMovimiento : MonoBehaviour
 {
