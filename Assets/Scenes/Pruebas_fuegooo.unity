@@ -349,7 +349,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295027931}
   m_Enabled: 1
-  serializedVersion: 13
+  serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
@@ -401,7 +401,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShapeRadius: 0
+  m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -509,6 +509,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8672742407956684596, guid: e72f9e2dd6666d94584e45b1dd4bfa62, type: 3}
     - {fileID: 6423473763757970554, guid: e72f9e2dd6666d94584e45b1dd4bfa62, type: 3}
+    - {fileID: 7917289497391248156, guid: e72f9e2dd6666d94584e45b1dd4bfa62, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -550,11 +551,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ControladorJugador
   esta_agachado: 0
   esta_saltando: 0
-  hitbox_delantera_completa: {fileID: 0}
-  hitbox_trasera_completa: {fileID: 0}
-  hitbox_delantera_agachado: {fileID: 0}
-  hitbox_trasera_agachado: {fileID: 0}
-  hitbox_cabeza: {fileID: 0}
+  "pu\xF1o_izquierdo": {fileID: 0}
+  "pu\xF1o_derecho": {fileID: 0}
+  pie_izquierdo: {fileID: 0}
+  pie_derecho: {fileID: 0}
   velocidad_movimiento: 5
 --- !u!1001 &1745966807
 PrefabInstance:
