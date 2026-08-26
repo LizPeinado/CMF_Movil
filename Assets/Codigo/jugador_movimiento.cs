@@ -246,5 +246,4 @@ public class JugadorMovimiento : MonoBehaviour
         bool retroceder = se_mueve.y < 0;
         animator.SetBool("Retrocede", retroceder);
     }*/
-
 }

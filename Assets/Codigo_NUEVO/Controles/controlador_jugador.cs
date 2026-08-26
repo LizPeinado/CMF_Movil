@@ -83,11 +83,15 @@ public class ControladorJugador : movimientos_personajes{
         hacer_patada_fuerte(animator_jugador);
     }
 
-    void saltar(InputAction.CallbackContext _){
+    void saltar(InputAction.CallbackContext _)
+    {
+        Debug.Log("INPUT DE SALTO DETECTADO");
         salta_jugador(rigid__body);
     }
 
-    void agachar(InputAction.CallbackContext _){
+    void agachar(InputAction.CallbackContext _)
+    {
+        Debug.Log("INPUT DE AGACHARSE DETECTADO");
         agacharse();
     }
 
@@ -139,10 +143,5 @@ public class ControladorJugador : movimientos_personajes{
 
         
     }
-
     //Para los Ataques
-
-
-
-
 }

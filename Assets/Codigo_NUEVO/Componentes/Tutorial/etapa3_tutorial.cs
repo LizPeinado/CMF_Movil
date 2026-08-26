@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class etapa3_tutorial : MonoBehaviour
+public class etapa3Tutorial : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -52,7 +52,6 @@ public class EnemigoAtaquesNuevo : MonoBehaviour
         }
 
         siguiente_golpe_izquierdo = !siguiente_golpe_izquierdo;
-
         StartCoroutine(activar_ataque(puño_izquierdo, puño_derecho, 10, 0.2f));
     }
 
