@@ -9,6 +9,8 @@ public class Etapa4Tutorial : MonoBehaviour
     private bool etapa_iniciada = false;
     private bool etapa_completada = false;
 
+    //Aqui tambien debe regenerar la vida del enemigo
+
     void Start()
     {
         controlador_etapas = FindFirstObjectByType<ControladorEtapas>();

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Etapa3Tutorial : MonoBehaviour
 {
+
+    //Agregar regenerar la vida del enemigo despues de cada golpe
+
     private ControladorJugador jugador;
     private ControladorEtapas controlador_etapas;
 

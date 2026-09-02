@@ -4,7 +4,11 @@ public enum EtapasTutorial{
     avanzar_retroceder,
     saltar_agacharse,
     ataques,
-    defender
+    defender,
+    quitar_defensa,
+    usar_item,
+    ataque_especial,
+    combate_final
 }
 public class ControladorEtapas : MonoBehaviour
 {
@@ -38,6 +42,18 @@ public class ControladorEtapas : MonoBehaviour
             case EtapasTutorial.defender:
                 etapa_defender();
             break;
+            case EtapasTutorial.quitar_defensa:
+                etapa_quitar_defensa();
+            break;
+            case EtapasTutorial.usar_item:
+                etapa_usar_item();
+            break;
+            case EtapasTutorial.ataque_especial:
+                etapa_ataque_especial();
+            break;
+            case EtapasTutorial.combate_final:
+                etapa_combate_final();
+            break;
         }
     }
 
@@ -57,4 +73,21 @@ public class ControladorEtapas : MonoBehaviour
     {
         Debug.Log("ETAPA 4: DEFENDER");
     }
+    void etapa_quitar_defensa()
+    {
+        Debug.Log("ETAPA 5: QUITAR LA DEFENSA");
+    }
+    void etapa_usar_item()
+    {
+        Debug.Log("ETAPA 6: USAR LOS ITEMS");
+    }
+    void etapa_ataque_especial()
+    {
+        Debug.Log("ETAPA 7: USAR ESPECIAL");
+    }
+    void etapa_combate_final()
+    {
+        Debug.Log("ETAPA 8: COMBATE FINAL");
+    }
+
 }
