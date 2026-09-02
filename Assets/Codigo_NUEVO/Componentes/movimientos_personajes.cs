@@ -10,7 +10,8 @@ public class movimientos_personajes : MonoBehaviour
     public event cambio_estado_evento hay_gente_escuchando_el_estado;
     
     //El estado empieza en quieto
-    private EstadosMovimiento estado_actual = EstadosMovimiento.quieto;
+    //cambie private a protected
+    protected EstadosMovimiento estado_actual = EstadosMovimiento.quieto;
 
     //Variables para verificar que este saltando/agachado
     public bool esta_agachado = false;
@@ -111,6 +112,7 @@ public class movimientos_personajes : MonoBehaviour
         // !! CAMBIAR HITBOXES
     }
 
+    /*
     public void hacer_golpe_debil(Animator animator)
     {
         if(siguiente_golpe_izquierdo)
@@ -142,6 +144,36 @@ public class movimientos_personajes : MonoBehaviour
         animator.SetTrigger("PatadaFuerte");
         StartCoroutine(activar_ataque(pie_izquierdo,pie_derecho,60,0.35f));
     }
+    */
+
+    public void hacer_golpe_debil(Animator animator)
+    {
+        if(siguiente_golpe_izquierdo)
+        {
+            animator.SetTrigger("Golpe2");
+        }
+        else
+        {
+            animator.SetTrigger("Golpe3");
+        }
+        siguiente_golpe_izquierdo = !siguiente_golpe_izquierdo;
+        StartCoroutine(activar_ataque(puño_izquierdo, puño_derecho, 10, 0.2f));
+    }
+
+    public void hacer_golpe_medio(Animator animator)
+    {
+        animator.SetTrigger("GolpeFuerte");
+        StartCoroutine(activar_ataque(puño_izquierdo, puño_derecho, 30, 0.5f));
+    }
+
+    public void hacer_golpe_fuerte(Animator animator)
+    {
+        animator.SetTrigger("PatadaFuerte");
+        StartCoroutine(activar_ataque(puño_izquierdo, puño_derecho, 60, 1f));
+    }
+
+
+
 
     public void cambiarEstado(EstadosMovimiento estado_nuevo){
         estado_actual = estado_nuevo;
@@ -163,5 +195,4 @@ public class movimientos_personajes : MonoBehaviour
         golpe1.ataque_activo = false;
         golpe2.ataque_activo = false;
     }
-
 }

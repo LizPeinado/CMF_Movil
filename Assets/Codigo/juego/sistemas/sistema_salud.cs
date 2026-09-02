@@ -17,6 +17,11 @@ public class Sistema_salud : MonoBehaviour
     public delegate void evento_muerte();
     public event evento_muerte al_morir_evento;
 
+    //PARA DEFENDER
+    public delegate void recibio_golpe_evento();
+    public event recibio_golpe_evento al_recibir_golpe_evento;
+    //
+
     public AudioClip sonido_de_tieso;
 
     private int salud_restante{
@@ -70,7 +75,10 @@ public class Sistema_salud : MonoBehaviour
 
         if(muerto) return;
         salud_restante = salud_restante - cantidad;
-
+        
+        //Para defender
+        al_recibir_golpe_evento?.Invoke();
+        //
         if(animator != null)
         {
             animator.SetTrigger("RecibirGolpe");
@@ -83,5 +91,4 @@ public class Sistema_salud : MonoBehaviour
             Debug.Log("Llegamos al final de la vida del jugador");
         }
     }
-
 }

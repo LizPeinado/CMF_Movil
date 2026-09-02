@@ -67,7 +67,7 @@ public class Etapa2Tutorial : MonoBehaviour
 
             //controlador_etapas.cambiar_etapa(EtapasTutorial.ataques);
 
-            controlador_etapas.cambiar_etapa(EtapasTutorial.defender);
+            controlador_etapas.cambiar_etapa(EtapasTutorial.ataques);
         }
     }
 }
