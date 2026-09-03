@@ -96,5 +96,7 @@ public class Sistema_salud : MonoBehaviour
     {
         muerto = false;
         salud_restante = salud;
+
+        Debug.Log($"[Sistema_salud] SALUD REGENERADA: {salud_restante}");
     }
 }

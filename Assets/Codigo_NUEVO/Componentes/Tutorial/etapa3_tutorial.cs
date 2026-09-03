@@ -1,9 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class Etapa3Tutorial : MonoBehaviour
 {
-    //Agregar regenerar la vida del enemigo despues de cada golpe
     private bool etapa_iniciada = false;
+
     private ControladorJugador jugador;
     private ControladorEtapas controlador_etapas;
 
@@ -13,8 +14,11 @@ public class Etapa3Tutorial : MonoBehaviour
 
     private bool etapa_completada = false;
 
+    //regenerar la vida del enemigo
     private Sistema_salud salud_enemigo;
     private int salud_anterior;
+    private bool regenerando = false;
+    //
 
     void Start()
     {
@@ -25,11 +29,13 @@ public class Etapa3Tutorial : MonoBehaviour
 
         if(enemigo != null)
         {
+            Debug.Log("ENCONTRAMOS AL ENEMIGO: " + enemigo.gameObject.name);
+
             salud_enemigo = enemigo.GetComponent<Sistema_salud>();
 
             if(salud_enemigo != null)
             {
-                salud_anterior = salud_enemigo.salud_actual;
+                Debug.Log("ENCONTRAMOS LA SALUD DEL ENEMIGO");
             }
         }
     }
@@ -63,7 +69,16 @@ public class Etapa3Tutorial : MonoBehaviour
     void iniciar_etapa()
     {
         etapa_iniciada = true;
+
+        Debug.Log("ETAPA 3: ATAQUES");
+
         jugador.puede_atacar = true;
+
+        /*if(salud_enemigo != null)
+        {
+            salud_anterior = salud_enemigo.salud_actual;
+            Debug.Log("SALUD INICIAL DEL ENEMIGO: " + salud_anterior);
+        }*/
     }
 
     void comprobar_golpe_debil()
@@ -73,6 +88,7 @@ public class Etapa3Tutorial : MonoBehaviour
             if(!golpe_debil_realizado)
             {
                 golpe_debil_realizado = true;
+
                 Debug.Log("EL JUGADOR HIZO GOLPE DEBIL");
             }
         }
@@ -85,6 +101,7 @@ public class Etapa3Tutorial : MonoBehaviour
             if(!golpe_medio_realizado)
             {
                 golpe_medio_realizado = true;
+
                 Debug.Log("EL JUGADOR HIZO GOLPE MEDIO");
             }
         }
@@ -97,9 +114,44 @@ public class Etapa3Tutorial : MonoBehaviour
             if(!golpe_fuerte_realizado)
             {
                 golpe_fuerte_realizado = true;
+
                 Debug.Log("EL JUGADOR HIZO GOLPE FUERTE");
             }
         }
+    }
+
+   void comprobar_salud()
+    {
+        if(salud_enemigo == null)
+        {
+            return;
+        }
+
+        if(regenerando)
+        {
+            return;
+        }
+
+        Debug.Log("SALUD ENEMIGO: " + salud_enemigo.salud_actual);
+        Debug.Log("SALUD ANTERIOR: " + salud_anterior);
+
+        if(salud_enemigo.salud_actual < salud_anterior)
+        {
+            Debug.Log("EL ENEMIGO RECIBIO UN GOLPE");
+            regenerando = true;
+            StartCoroutine(regenerar_despues());
+        }
+    }
+
+    IEnumerator regenerar_despues()
+    {
+        yield return new WaitForSeconds(0.5f);
+        salud_enemigo.recuperar_salud();
+        salud_anterior = salud_enemigo.salud_actual;
+
+        Debug.Log("SALUD DESPUES DE RECUPERAR: " + salud_enemigo.salud_actual);
+
+        regenerando = false;
     }
 
     void comprobar_etapa()
@@ -113,20 +165,6 @@ public class Etapa3Tutorial : MonoBehaviour
             controlador_etapas.cambiar_etapa(
                 EtapasTutorial.defender
             );
-        }
-    }
-
-    void comprobar_salud()
-    {
-        if(salud_enemigo == null)
-        {
-            return;
-        }
-
-        if(salud_enemigo.salud_actual < salud_anterior)
-        {
-            salud_enemigo.recuperar_salud();
-            salud_anterior = salud_enemigo.salud_actual;
         }
     }
 }
