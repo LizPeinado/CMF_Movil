@@ -17,6 +17,8 @@ public class movimientos_personajes : MonoBehaviour
     public bool esta_agachado = false;
     public bool esta_saltando = false;
 
+    public bool puede_atacar = true;
+
     //Recibir HITBOXES dependiendo personaje
     /*[Header("Hitboxes")]
     public GameObject hitbox_delantera_completa;
@@ -148,6 +150,11 @@ public class movimientos_personajes : MonoBehaviour
 
     public void hacer_golpe_debil(Animator animator)
     {
+        if(!puede_atacar)
+        {
+            return;
+        }
+
         if(siguiente_golpe_izquierdo)
         {
             animator.SetTrigger("Golpe2");
@@ -156,20 +163,30 @@ public class movimientos_personajes : MonoBehaviour
         {
             animator.SetTrigger("Golpe3");
         }
+
         siguiente_golpe_izquierdo = !siguiente_golpe_izquierdo;
-        StartCoroutine(activar_ataque(puño_izquierdo, puño_derecho, 10, 0.2f));
+        StartCoroutine(activar_ataque(puño_izquierdo,puño_derecho,10,0.2f));
     }
 
     public void hacer_golpe_medio(Animator animator)
     {
+        if(!puede_atacar)
+        {
+            return;
+        }
         animator.SetTrigger("GolpeFuerte");
         StartCoroutine(activar_ataque(puño_izquierdo, puño_derecho, 30, 0.5f));
     }
 
     public void hacer_golpe_fuerte(Animator animator)
     {
+        if(!puede_atacar)
+        {
+            return;
+        }
+
         animator.SetTrigger("PatadaFuerte");
-        StartCoroutine(activar_ataque(puño_izquierdo, puño_derecho, 60, 1f));
+        StartCoroutine(activar_ataque(puño_izquierdo,puño_derecho,30,1f));
     }
 
 

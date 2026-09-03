@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Etapa1Tutorial : MonoBehaviour
 {
+    private bool etapa_iniciada = false;
     private bool etapa_completada = false;
     private ControladorEtapas controlador_etapas;
     private PlayerInput entradas_jugador;
@@ -36,6 +37,12 @@ public class Etapa1Tutorial : MonoBehaviour
             return;
         }
 
+        if(!etapa_iniciada)
+        {
+            etapa_iniciada = true;
+            iniciar_etapa();
+        }
+
         Vector2 direccion = movimientos.ReadValue<Vector2>();
         float direccion_horizontal = direccion.y;
 
@@ -62,6 +69,11 @@ public class Etapa1Tutorial : MonoBehaviour
             }
         }
         comprobar_etapa();
+    }
+
+    void iniciar_etapa()
+    {
+        jugador.puede_atacar = false;
     }
 
     void comprobar_etapa()

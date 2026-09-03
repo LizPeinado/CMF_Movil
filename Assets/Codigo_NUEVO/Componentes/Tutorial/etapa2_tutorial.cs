@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Etapa2Tutorial : MonoBehaviour
 {
+    private bool etapa_iniciada = false;
     private ControladorJugador jugador;
     private ControladorEtapas controlador_etapas;
 
@@ -27,11 +28,20 @@ public class Etapa2Tutorial : MonoBehaviour
         {
           return;  
         }
+        if(!etapa_iniciada)
+        {
+            etapa_iniciada = true;
+            iniciar_etapa();
+        }
          
-
         comprobar_salto();
         comprobar_agacharse();
         comprobar_etapa();
+    }
+
+    void iniciar_etapa()
+    {
+        jugador.puede_atacar = false;
     }
 
     void comprobar_salto()

@@ -91,4 +91,10 @@ public class Sistema_salud : MonoBehaviour
             Debug.Log("Llegamos al final de la vida del jugador");
         }
     }
+    
+    public void recuperar_salud()
+    {
+        muerto = false;
+        salud_restante = salud;
+    }
 }
