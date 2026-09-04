@@ -19,6 +19,8 @@ public class Etapa1Tutorial : MonoBehaviour
     {
         jugador = FindFirstObjectByType<ControladorJugador>();
         controlador_etapas = FindFirstObjectByType<ControladorEtapas>();
+        
+        controlador_etapas.activar_pausa();
 
         if(jugador != null)
         {
@@ -30,10 +32,6 @@ public class Etapa1Tutorial : MonoBehaviour
     void Update()
     {
 
-        if(controlador_etapas.etapa_actual == EtapasTutorial.esperando)
-        {
-            dialogos_etapa(controlador_etapas.caja_dialogos);
-        }
         if(controlador_etapas.etapa_actual != EtapasTutorial.avanzar_retroceder)
         {
             return;
@@ -46,7 +44,7 @@ public class Etapa1Tutorial : MonoBehaviour
         if(!etapa_iniciada)
         {
             etapa_iniciada = true;
-            iniciar_etapa();
+            dialogos_etapa(controlador_etapas.caja_dialogos);
         }
 
         Vector2 direccion = movimientos.ReadValue<Vector2>();
@@ -97,10 +95,9 @@ public class Etapa1Tutorial : MonoBehaviour
 
     void dialogos_etapa(TMP_Text cajita){
         cajita.text = "Estamos en la etapa 1 chavales";
-        if(controlador_etapas.esta_en_pausa == true)
-        {
-            controlador_etapas.quitar_pausa();
-            controlador_etapas.cambiar_etapa(EtapasTutorial.avanzar_retroceder);
+        if(controlador_etapas.esta_en_pausa == false){
+            
+            iniciar_etapa();
         }
     }
 }

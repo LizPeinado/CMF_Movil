@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class Etapa4Tutorial : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class Etapa4Tutorial : MonoBehaviour
 
         if(!etapa_iniciada)
         {
-            iniciar_etapa();
+            dialogos_etapa3(controlador_etapas.caja_dialogos);
         }
         comprobar_defensa();
     }
@@ -61,6 +62,13 @@ public class Etapa4Tutorial : MonoBehaviour
         {
             etapa_completada = true;
             Debug.Log("ETAPA 4 COMPLETADA");
+        }
+    }
+    void dialogos_etapa3(TMP_Text cajita){
+        cajita.text = "Estamos en la etapa 4, awuas";
+        if(controlador_etapas.esta_en_pausa == false){
+            controlador_etapas.cambiar_etapa(EtapasTutorial.defender);
+            iniciar_etapa();
         }
     }
 }

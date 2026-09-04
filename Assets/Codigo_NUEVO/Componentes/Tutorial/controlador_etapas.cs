@@ -5,7 +5,6 @@ using UnityEngine;
 using TMPro;
 
 public enum EtapasTutorial{
-    esperando,
     avanzar_retroceder,
     saltar_agacharse,
     ataques,
@@ -17,7 +16,7 @@ public enum EtapasTutorial{
 }
 public class ControladorEtapas : MonoBehaviour
 {
-    public EtapasTutorial etapa_actual = EtapasTutorial.esperando;
+    public EtapasTutorial etapa_actual = EtapasTutorial.avanzar_retroceder;
     public TMP_Text caja_dialogos;
     public int contador_boton=1;
 
@@ -32,6 +31,7 @@ public class ControladorEtapas : MonoBehaviour
     public void cambiar_etapa(EtapasTutorial nueva_etapa)
     {
         etapa_actual = nueva_etapa;
+        activar_pausa();
         Debug.Log("ETAPA DEL TUTORIAL: " + etapa_actual);
         aplicar_etapa();
     }
@@ -40,14 +40,11 @@ public class ControladorEtapas : MonoBehaviour
     {
         switch(etapa_actual)
         {
-            case EtapasTutorial.esperando:
-                etapa_esperando();
-                Time.timeScale = 0f;
-            break;
             case EtapasTutorial.avanzar_retroceder:
                 etapa_avanzar_retroceder();
             break;
             case EtapasTutorial.saltar_agacharse:
+                
                 etapa_saltar_agacharse();
             break;
             case EtapasTutorial.ataques:
@@ -113,6 +110,7 @@ public class ControladorEtapas : MonoBehaviour
         esta_en_pausa = true;
         Time.timeScale = 0f;
         contador_boton += 1;
+        Debug.Log("PAUSA activada");
     }
 
     public void quitar_pausa()
@@ -120,6 +118,7 @@ public class ControladorEtapas : MonoBehaviour
         esta_en_pausa = false;
         Time.timeScale = 1f;
         contador_boton += 1;
+        Debug.Log("PAUSA quitada");
     }
 
 }

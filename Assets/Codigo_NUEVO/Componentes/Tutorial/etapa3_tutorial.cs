@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class Etapa3Tutorial : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Etapa3Tutorial : MonoBehaviour
 
     //regenerar la vida del enemigo
     private Sistema_salud salud_enemigo;
+
+    private Cerebro_enemigo enemigo;
     private int salud_anterior;
     private bool regenerando = false;
     //
@@ -25,19 +28,9 @@ public class Etapa3Tutorial : MonoBehaviour
         jugador = FindFirstObjectByType<ControladorJugador>();
         controlador_etapas = FindFirstObjectByType<ControladorEtapas>();
 
-        Cerebro_enemigo enemigo = FindFirstObjectByType<Cerebro_enemigo>();
+        enemigo = FindFirstObjectByType<Cerebro_enemigo>();
 
-        if(enemigo != null)
-        {
-            Debug.Log("ENCONTRAMOS AL ENEMIGO: " + enemigo.gameObject.name);
-
-            salud_enemigo = enemigo.GetComponent<Sistema_salud>();
-
-            if(salud_enemigo != null)
-            {
-                Debug.Log("ENCONTRAMOS LA SALUD DEL ENEMIGO");
-            }
-        }
+        
     }
 
     void Update()
@@ -54,7 +47,22 @@ public class Etapa3Tutorial : MonoBehaviour
 
         if(!etapa_iniciada)
         {
-            iniciar_etapa();
+            etapa_iniciada = true;
+            controlador_etapas.activar_pausa();
+            dialogos_etapa3(controlador_etapas.caja_dialogos);
+            
+        }
+
+        if(enemigo != null)
+        {
+            Debug.Log("ENCONTRAMOS AL ENEMIGO: " + enemigo.gameObject.name);
+
+            salud_enemigo = enemigo.GetComponent<Sistema_salud>();
+
+            if(salud_enemigo != null)
+            {
+                Debug.Log("ENCONTRAMOS LA SALUD DEL ENEMIGO");
+            }
         }
 
         comprobar_golpe_debil();
@@ -68,7 +76,7 @@ public class Etapa3Tutorial : MonoBehaviour
 
     void iniciar_etapa()
     {
-        etapa_iniciada = true;
+        
 
         Debug.Log("ETAPA 3: ATAQUES");
 
@@ -165,6 +173,15 @@ public class Etapa3Tutorial : MonoBehaviour
             controlador_etapas.cambiar_etapa(
                 EtapasTutorial.defender
             );
+        }
+    }
+
+    void dialogos_etapa3(TMP_Text cajita){
+        cajita.text = "Estamos en la etapa 3, dale en la madre";
+        if(controlador_etapas.esta_en_pausa == false)
+        {
+            controlador_etapas.cambiar_etapa(EtapasTutorial.ataques);
+            iniciar_etapa();
         }
     }
 }
