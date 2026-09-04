@@ -1,6 +1,11 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public enum EtapasTutorial{
+    esperando,
     avanzar_retroceder,
     saltar_agacharse,
     ataques,
@@ -12,10 +17,15 @@ public enum EtapasTutorial{
 }
 public class ControladorEtapas : MonoBehaviour
 {
-    public EtapasTutorial etapa_actual = EtapasTutorial.avanzar_retroceder;
+    public EtapasTutorial etapa_actual = EtapasTutorial.esperando;
+    public TMP_Text caja_dialogos;
+    public int contador_boton=1;
+
+    public bool esta_en_pausa = false;
 
     private void Start()
     {
+        /*caja_dialogos = GetComponent<TMP_Text>();*/
         aplicar_etapa();
     }
 
@@ -30,6 +40,10 @@ public class ControladorEtapas : MonoBehaviour
     {
         switch(etapa_actual)
         {
+            case EtapasTutorial.esperando:
+                etapa_esperando();
+                Time.timeScale = 0f;
+            break;
             case EtapasTutorial.avanzar_retroceder:
                 etapa_avanzar_retroceder();
             break;
@@ -55,6 +69,10 @@ public class ControladorEtapas : MonoBehaviour
                 etapa_combate_final();
             break;
         }
+    }
+
+    void etapa_esperando(){
+        Debug.Log("ESPERANDO CAMBIO");
     }
 
     void etapa_avanzar_retroceder()
@@ -88,6 +106,20 @@ public class ControladorEtapas : MonoBehaviour
     void etapa_combate_final()
     {
         Debug.Log("ETAPA 8: COMBATE FINAL");
+    }
+
+    public void activar_pausa()
+    {
+        esta_en_pausa = true;
+        Time.timeScale = 0f;
+        contador_boton += 1;
+    }
+
+    public void quitar_pausa()
+    {
+        esta_en_pausa = false;
+        Time.timeScale = 1f;
+        contador_boton += 1;
     }
 
 }

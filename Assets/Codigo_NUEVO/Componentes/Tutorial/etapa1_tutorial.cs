@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,6 +29,11 @@ public class Etapa1Tutorial : MonoBehaviour
 
     void Update()
     {
+
+        if(controlador_etapas.etapa_actual == EtapasTutorial.esperando)
+        {
+            dialogos_etapa(controlador_etapas.caja_dialogos);
+        }
         if(controlador_etapas.etapa_actual != EtapasTutorial.avanzar_retroceder)
         {
             return;
@@ -85,6 +91,15 @@ public class Etapa1Tutorial : MonoBehaviour
             Debug.Log("ETAPA 1 COMPLETADA");
 
             controlador_etapas.cambiar_etapa(EtapasTutorial.saltar_agacharse);
+        }
+    }
+
+    void dialogos_etapa(TMP_Text cajita){
+        cajita.text = "Estamos en la etapa 1 chavales";
+        if(controlador_etapas.esta_en_pausa == true)
+        {
+            controlador_etapas.quitar_pausa();
+            controlador_etapas.cambiar_etapa(EtapasTutorial.avanzar_retroceder);
         }
     }
 }
