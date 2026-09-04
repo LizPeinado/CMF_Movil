@@ -91,6 +91,7 @@ public class Etapa1Tutorial : MonoBehaviour
             Debug.Log("ETAPA 1 COMPLETADA");
 
             controlador_etapas.cambiar_etapa(EtapasTutorial.saltar_agacharse);
+            controlador_etapas.activar_pausa();
         }
     }
 

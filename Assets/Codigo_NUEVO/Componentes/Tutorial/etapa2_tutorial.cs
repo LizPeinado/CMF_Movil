@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Etapa2Tutorial : MonoBehaviour
@@ -19,6 +20,12 @@ public class Etapa2Tutorial : MonoBehaviour
 
     void Update()
     {
+
+        /*if(controlador_etapas.etapa_actual == EtapasTutorial.esperando)
+        {
+            dialogos_etapa2(controlador_etapas.caja_dialogos);
+        }*/
+
         if(controlador_etapas.etapa_actual != EtapasTutorial.saltar_agacharse)
         {
             return;
@@ -78,6 +85,15 @@ public class Etapa2Tutorial : MonoBehaviour
             //controlador_etapas.cambiar_etapa(EtapasTutorial.ataques);
 
             controlador_etapas.cambiar_etapa(EtapasTutorial.ataques);
+        }
+    }
+
+   void dialogos_etapa2(TMP_Text cajita){
+        cajita.text = "Estamos en la etapa 2 chavales. saltale saltale";
+        if(controlador_etapas.esta_en_pausa == true)
+        {
+            controlador_etapas.quitar_pausa();
+            controlador_etapas.cambiar_etapa(EtapasTutorial.saltar_agacharse);
         }
     }
 }
