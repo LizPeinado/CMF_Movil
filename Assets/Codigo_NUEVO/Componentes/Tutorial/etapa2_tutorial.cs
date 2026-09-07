@@ -88,8 +88,8 @@ public class Etapa2Tutorial : MonoBehaviour
         }
     }
 
-   void dialogos_etapa2(TMP_Text cajita){
-        cajita.text = "Estamos en la etapa 2 chavales. saltale saltale";
+    void dialogos_etapa2(TMP_Text cajita){
+        cajita.text = "Estamos en la etapa 2 chavales. saltale saltale (y agachate)";
         if(controlador_etapas.esta_en_pausa == false)
         {
             controlador_etapas.cambiar_etapa(EtapasTutorial.saltar_agacharse);

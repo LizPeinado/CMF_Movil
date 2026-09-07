@@ -15,9 +15,8 @@ public class Etapa3Tutorial : MonoBehaviour
 
     private bool etapa_completada = false;
 
-    //regenerar la vida del enemigo
+    // REGENERAR SALUD DEL ENEMIGO
     private Sistema_salud salud_enemigo;
-
     private Cerebro_enemigo enemigo;
     private int salud_anterior;
     private bool regenerando = false;
@@ -30,11 +29,19 @@ public class Etapa3Tutorial : MonoBehaviour
 
         enemigo = FindFirstObjectByType<Cerebro_enemigo>();
 
-        
+        if(enemigo != null)
+        {
+            salud_enemigo = enemigo.GetComponent<Sistema_salud>();
+        }
     }
 
     void Update()
     {
+        if(controlador_etapas == null)
+        {
+            return;
+        }
+
         if(controlador_etapas.etapa_actual != EtapasTutorial.ataques)
         {
             return;
@@ -45,24 +52,23 @@ public class Etapa3Tutorial : MonoBehaviour
             return;
         }
 
+        // MOSTRAR EL MENSAJE CUANDO COMIENZA LA ETAPA
         if(!etapa_iniciada)
         {
-            etapa_iniciada = true;
-            controlador_etapas.activar_pausa();
             dialogos_etapa3(controlador_etapas.caja_dialogos);
-            
+
+            if(controlador_etapas.esta_en_pausa)
+            {
+                return;
+            }
+
+            iniciar_etapa();
         }
 
-        if(enemigo != null)
+        // MIENTRAS ESTA EN PAUSA NO HACEMOS NADA
+        if(controlador_etapas.esta_en_pausa)
         {
-            Debug.Log("ENCONTRAMOS AL ENEMIGO: " + enemigo.gameObject.name);
-
-            salud_enemigo = enemigo.GetComponent<Sistema_salud>();
-
-            if(salud_enemigo != null)
-            {
-                Debug.Log("ENCONTRAMOS LA SALUD DEL ENEMIGO");
-            }
+            return;
         }
 
         comprobar_golpe_debil();
@@ -76,17 +82,19 @@ public class Etapa3Tutorial : MonoBehaviour
 
     void iniciar_etapa()
     {
-        
+        etapa_iniciada = true;
 
         Debug.Log("ETAPA 3: ATAQUES");
 
         jugador.puede_atacar = true;
 
-        /*if(salud_enemigo != null)
+        // GUARDAMOS LA SALUD CUANDO REALMENTE INICIA LA ETAPA
+        if(salud_enemigo != null)
         {
             salud_anterior = salud_enemigo.salud_actual;
+
             Debug.Log("SALUD INICIAL DEL ENEMIGO: " + salud_anterior);
-        }*/
+        }
     }
 
     void comprobar_golpe_debil()
@@ -128,7 +136,7 @@ public class Etapa3Tutorial : MonoBehaviour
         }
     }
 
-   void comprobar_salud()
+    void comprobar_salud()
     {
         if(salud_enemigo == null)
         {
@@ -140,21 +148,23 @@ public class Etapa3Tutorial : MonoBehaviour
             return;
         }
 
-        Debug.Log("SALUD ENEMIGO: " + salud_enemigo.salud_actual);
-        Debug.Log("SALUD ANTERIOR: " + salud_anterior);
-
         if(salud_enemigo.salud_actual < salud_anterior)
         {
             Debug.Log("EL ENEMIGO RECIBIO UN GOLPE");
+
             regenerando = true;
-            StartCoroutine(regenerar_despues());
+
+            StartCoroutine(regenerar_salud());
         }
     }
 
-    IEnumerator regenerar_despues()
+    IEnumerator regenerar_salud()
     {
-        yield return new WaitForSeconds(0.5f);
+        // ESPERAMOS PARA QUE LA BARRA PUEDA MOSTRAR EL DAÑO
+        yield return new WaitForSecondsRealtime(0.5f);
+
         salud_enemigo.recuperar_salud();
+
         salud_anterior = salud_enemigo.salud_actual;
 
         Debug.Log("SALUD DESPUES DE RECUPERAR: " + salud_enemigo.salud_actual);
@@ -176,12 +186,13 @@ public class Etapa3Tutorial : MonoBehaviour
         }
     }
 
-    void dialogos_etapa3(TMP_Text cajita){
-        cajita.text = "Estamos en la etapa 3, dale en la madre";
-        if(controlador_etapas.esta_en_pausa == false)
+    void dialogos_etapa3(TMP_Text cajita)
+    {
+        if(cajita == null)
         {
-            controlador_etapas.cambiar_etapa(EtapasTutorial.ataques);
-            iniciar_etapa();
+            return;
         }
+
+        cajita.text = "Estamos en la etapa 3, dale en la madre (U - I - O)";
     }
 }

@@ -65,7 +65,7 @@ public class Etapa4Tutorial : MonoBehaviour
         }
     }
     void dialogos_etapa3(TMP_Text cajita){
-        cajita.text = "Estamos en la etapa 4, awuas";
+        cajita.text = "Estamos en la etapa 4, dale pa' atras hasta que pare de golpearte";
         if(controlador_etapas.esta_en_pausa == false){
             controlador_etapas.cambiar_etapa(EtapasTutorial.defender);
             iniciar_etapa();

@@ -120,5 +120,4 @@ public class ControladorEtapas : MonoBehaviour
         contador_boton += 1;
         Debug.Log("PAUSA quitada");
     }
-
 }

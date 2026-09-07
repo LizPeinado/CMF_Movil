@@ -94,7 +94,7 @@ public class Etapa1Tutorial : MonoBehaviour
     }
 
     void dialogos_etapa(TMP_Text cajita){
-        cajita.text = "Estamos en la etapa 1 chavales";
+        cajita.text = "Estamos en la etapa 1 chavales, avanza y retrocede";
         if(controlador_etapas.esta_en_pausa == false){
             
             iniciar_etapa();
