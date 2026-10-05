@@ -40,7 +40,7 @@ public class AgarrableComponente : MonoBehaviour, InteractuableComportamiento{
     }
 
     public void accion_golpazo(){ //Accion para la silla, llamar animacion y dar hitbox para hacer daño
-
+        
     }
    
 }

@@ -9,16 +9,36 @@ public class SistemaInventarioJugador : MonoBehaviour
 {
     private PlayerInput entradas_del_jugador;
     private InputAction interactuar;
+
+    private UbicacionInventario mano_derecha;
+    private UbicacionInventario mano_izquierda;
+    private InteractuableComportamiento puedo_tomar_esto;
+    private GameObject objeto_para_recoger;
     
     
-    void Start()
-    {
-        
+    void Start(){
+        entradas_del_jugador = GetComponent<PlayerInput>();
+        interactuar = entradas_del_jugador.actions.FindAction("Agacharse");
+
+        interactuar.performed += realizar_interaccion;
+
+        var ubicaciones_inventario = GetComponentInChildren<UbicacionInventario>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void realizar_interaccion(InputAction.CallbackContext _){
+        if(puedo_tomar_esto == null){
+            return;
+        }
+        if(puedo_tomar_esto != null)
+        {
+            switch (puedo_tomar_esto.tipo)
+            {
+                case TipoItem.consumible:
+                break;
+
+                case TipoItem.golpazo:
+                break;
+            }
+        }
     }
 }
