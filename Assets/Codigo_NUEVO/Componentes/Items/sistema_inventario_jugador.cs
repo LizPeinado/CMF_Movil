@@ -23,6 +23,17 @@ public class SistemaInventarioJugador : MonoBehaviour
         interactuar.performed += realizar_interaccion;
 
         var ubicaciones_inventario = GetComponentInChildren<UbicacionInventario>();
+
+        /*foreach (var ubicacion in ubicaciones_inventario) {
+
+            if (ubicacion.lugar == NombreUbicacion.mano_derecha) {
+                mano_derecha = ubicacion;
+            }
+
+            else {
+                mano_izquierda = ubicacion;
+            }
+        }*/
     }
 
     void realizar_interaccion(InputAction.CallbackContext _){
@@ -41,4 +52,5 @@ public class SistemaInventarioJugador : MonoBehaviour
             }
         }
     }
+
 }

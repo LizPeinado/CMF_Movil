@@ -1,3 +1,5 @@
+using System;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 
@@ -5,6 +7,7 @@ public enum NombreUbicacion{
     mano_derecha,
     mano_izquierda
 }
+
 public class UbicacionInventario : MonoBehaviour
 {
    public NombreUbicacion lugar = NombreUbicacion.mano_derecha;
@@ -23,9 +26,9 @@ public class UbicacionInventario : MonoBehaviour
     }
     
     public bool agarrar(InteractuableComportamiento objeto){
-        if(ocupada || objeto == null){
+       /* if(ocupada || objeto == null){
             return false;
-        }
+        }*/
 
         objeto.colocar_en(gameObject.transform);
         objeto_agarrado = objeto;
