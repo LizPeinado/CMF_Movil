@@ -96,28 +96,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
-                    "id": "3aba2647-a50f-4a44-adb1-e0de96d7f4b5",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "movimiento",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "96ead934-863a-45d3-8481-7efb9ecf34d1",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "movimiento",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "ab080ef2-3d8a-4b93-8811-863a936694b5",
                     "path": "<Joystick>/stick",
@@ -132,6 +110,17 @@
                     "name": "",
                     "id": "aeb5d1d8-6431-46ca-b166-a40b408ce3f4",
                     "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Saltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b43f9e8e-aa38-4a65-93fe-d2984dc1a44c",
+                    "path": "<Joystick>/stick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -165,6 +154,17 @@
                     "name": "",
                     "id": "30c7dffe-fb91-4093-866e-828d6a07c3d7",
                     "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Agacharse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "82242524-7714-4a1c-b7d4-27f08d78f63e",
+                    "path": "<Joystick>/stick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
