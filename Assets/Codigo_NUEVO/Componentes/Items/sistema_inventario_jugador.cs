@@ -1,56 +1,165 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using UnityEditor.Build;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SistemaInventarioJugador : MonoBehaviour
 {
     private PlayerInput entradas_del_jugador;
-    private InputAction interactuar;
+    private InputAction agacharse;
 
-    private UbicacionInventario mano_derecha;
-    private UbicacionInventario mano_izquierda;
-    private InteractuableComportamiento puedo_tomar_esto;
-    private GameObject objeto_para_recoger;
-    
-    
-    void Start(){
+    public UbicacionInventario mano_derecha;
+    public UbicacionInventario mano_izquierda;
+
+    private AgarrableComponente objeto_cercano;
+
+    void Start()
+    {
         entradas_del_jugador = GetComponent<PlayerInput>();
-        interactuar = entradas_del_jugador.actions.FindAction("Agacharse");
 
-        interactuar.performed += realizar_interaccion;
+        agacharse = entradas_del_jugador.actions.FindAction("Agacharse");
 
-        var ubicaciones_inventario = GetComponentInChildren<UbicacionInventario>();
-
-        /*foreach (var ubicacion in ubicaciones_inventario) {
-
-            if (ubicacion.lugar == NombreUbicacion.mano_derecha) {
-                mano_derecha = ubicacion;
-            }
-
-            else {
-                mano_izquierda = ubicacion;
-            }
-        }*/
+        if(agacharse != null)
+        {
+            agacharse.performed += realizar_interaccion;
+        }
+        else
+        {
+            Debug.LogError("NO SE ENCONTRO LA ACCION Agacharse");
+        }
     }
 
-    void realizar_interaccion(InputAction.CallbackContext _){
-        if(puedo_tomar_esto == null){
+    void OnDestroy()
+    {
+        if(agacharse != null)
+        {
+            agacharse.performed -= realizar_interaccion;
+        }
+    }
+
+    void Update()
+    {
+        cambiar_de_mano();
+    }
+
+    void OnTriggerEnter(Collider otro)
+    {
+        AgarrableComponente objeto =
+            otro.GetComponentInParent<AgarrableComponente>();
+
+        if(objeto != null)
+        {
+            objeto_cercano = objeto;
+            Debug.Log("OBJETO CERCANO: " + objeto.name);
+        }
+    }
+
+    void OnTriggerExit(Collider otro)
+    {
+        AgarrableComponente objeto =
+            otro.GetComponentInParent<AgarrableComponente>();
+
+        if(objeto != null && objeto == objeto_cercano)
+        {
+            objeto_cercano = null;
+            Debug.Log("OBJETO FUERA DE ALCANCE");
+        }
+    }
+
+    void realizar_interaccion(InputAction.CallbackContext _)
+    {
+        if(objeto_cercano == null)
+        {
+            Debug.Log("NO HAY OBJETO CERCA PARA RECOGER");
             return;
         }
-        if(puedo_tomar_esto != null)
-        {
-            switch (puedo_tomar_esto.tipo)
-            {
-                case TipoItem.consumible:
-                break;
 
-                case TipoItem.golpazo:
-                break;
+        UbicacionInventario mano_elegida;
+
+        if(transform.forward.x > 0)
+        {
+            mano_elegida = mano_derecha;
+        }
+        else
+        {
+            mano_elegida = mano_izquierda;
+        }
+
+        if(mano_elegida == null)
+        {
+            Debug.LogError("NO SE ASIGNO LA MANO CORRESPONDIENTE");
+            return;
+        }
+
+        if(mano_elegida.agarrar(objeto_cercano))
+        {
+            objeto_cercano = null;
+        }
+    }
+
+    void cambiar_de_mano()
+    {
+        UbicacionInventario mano_elegida;
+        UbicacionInventario otra_mano;
+
+        if(transform.forward.x > 0)
+        {
+            mano_elegida = mano_derecha;
+            otra_mano = mano_izquierda;
+        }
+        else
+        {
+            mano_elegida = mano_izquierda;
+            otra_mano = mano_derecha;
+        }
+
+        if(mano_elegida == null || otra_mano == null)
+        {
+            return;
+        }
+
+        // Si el objeto ya esta en la mano correcta, no hacemos nada.
+        if(mano_elegida.ocupada)
+        {
+            return;
+        }
+
+        // Si el objeto esta en la otra mano, lo cambiamos.
+        if(otra_mano.ocupada)
+        {
+            AgarrableComponente objeto = otra_mano.liberar();
+
+            if(objeto != null)
+            {
+                mano_elegida.agarrar(objeto);
+
+                Debug.Log("OBJETO CAMBIADO DE MANO");
             }
         }
     }
 
+    public void usar_objeto()
+    {
+        AgarrableComponente objeto = null;
+
+        // Revisar si el objeto esta en la mano derecha.
+        if(mano_derecha != null && mano_derecha.ocupada)
+        {
+            objeto = mano_derecha.liberar();
+        }
+        // Si no, revisar la mano izquierda.
+        else if(mano_izquierda != null && mano_izquierda.ocupada)
+        {
+            objeto = mano_izquierda.liberar();
+        }
+
+        // Si hay un objeto, consumirlo.
+        if(objeto != null)
+        {
+            Debug.Log("OBJETO UTILIZADO: " + objeto.nombre_actual);
+
+            Destroy(objeto.gameObject);
+        }
+    }
 }
+
+

@@ -1,47 +1,34 @@
-using System;
-using UnityEditor.EditorTools;
+
 using UnityEngine;
-
-
-public enum NombreUbicacion{
-    mano_derecha,
-    mano_izquierda
-}
 
 public class UbicacionInventario : MonoBehaviour
 {
-   public NombreUbicacion lugar = NombreUbicacion.mano_derecha;
-   public bool ocupada = false;
+    public bool ocupada = false;
+    public AgarrableComponente objeto_agarrado;
 
-   public InteractuableComportamiento objeto_agarrado;
-
-   public void interaccion(InteractuableComportamiento objeto)
+    public bool agarrar(AgarrableComponente objeto)
     {
-        if (ocupada){
-
-        }
-        else{
-            agarrar(objeto);
-        }
-    }
-    
-    public bool agarrar(InteractuableComportamiento objeto){
-       /* if(ocupada || objeto == null){
+        if(ocupada || objeto == null)
+        {
             return false;
-        }*/
+        }
 
-        objeto.colocar_en(gameObject.transform);
+        objeto.colocar_en(transform);
         objeto_agarrado = objeto;
         ocupada = true;
 
+        Debug.Log("OBJETO COLOCADO EN LA MANO: " + objeto.name);
         return true;
     }
 
-    public void objeto_usado(){
-        if (ocupada){
-            objeto_agarrado = null;
-            
-            ocupada = false;
-        }
+    public AgarrableComponente liberar()
+    {
+        AgarrableComponente objeto = objeto_agarrado;
+
+        objeto_agarrado = null;
+        ocupada = false;
+
+        return objeto;
     }
 }
+

@@ -8,6 +8,9 @@ public class ControladorJugador : movimientos_personajes{
     private Rigidbody rigid__body;
     private PlayerInput entradas_jugador;
     private Sistema_salud sistema_salud; //para defenderse
+
+    //PARA OBJETOS
+    private SistemaInventarioJugador inventario; 
     
     //INPUT ACTIONS - MOVIMIENTOS
     private InputAction movimientos;
@@ -40,7 +43,6 @@ public class ControladorJugador : movimientos_personajes{
 
     //INFORMACION DE ENEMIGO
     private List<GameObject> a_quien_madreamos;
-
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -87,9 +89,8 @@ public class ControladorJugador : movimientos_personajes{
         patada_debil.performed += dale_patada_debil;
         patada_fuerte.performed += dale_patada_fuerte;*/
 
-        //Buscar a quien pegar
-
-
+        //OBJETOS
+        inventario = GetComponent<SistemaInventarioJugador>();
     }
 
     /*
@@ -118,6 +119,12 @@ public class ControladorJugador : movimientos_personajes{
         golpe_debil_realizado = true;
 
         hacer_golpe_debil(animator_jugador);
+
+        //EN CASO DE OBJETO
+        if(inventario != null)
+        {
+            inventario.usar_objeto();
+        }
     }
 
     void dale_golpe_medio(InputAction.CallbackContext _)
@@ -126,6 +133,12 @@ public class ControladorJugador : movimientos_personajes{
         golpe_medio_realizado = true;
 
         hacer_golpe_medio(animator_jugador);
+
+        //EN CASO DE OBJETO
+        if(inventario != null)
+        {
+            inventario.usar_objeto();
+        }
     }
 
     void dale_golpe_fuerte(InputAction.CallbackContext _)
@@ -134,6 +147,12 @@ public class ControladorJugador : movimientos_personajes{
         golpe_fuerte_realizado = true;
 
         hacer_golpe_fuerte(animator_jugador);
+
+        //EN CASO DE OBJETO
+        if(inventario != null)
+        {
+            inventario.usar_objeto();
+        }
     }
 
     void saltar(InputAction.CallbackContext _)
