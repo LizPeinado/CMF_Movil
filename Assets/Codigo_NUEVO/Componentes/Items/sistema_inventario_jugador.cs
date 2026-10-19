@@ -12,6 +12,9 @@ public class SistemaInventarioJugador : MonoBehaviour
 
     private AgarrableComponente objeto_cercano;
 
+    //SILLAZO
+    public GameObject sillazo;
+
     void Start()
     {
         entradas_del_jugador = GetComponent<PlayerInput>();
@@ -137,6 +140,18 @@ public class SistemaInventarioJugador : MonoBehaviour
         }
     }
 
+    //Cambiar esto de sistema inventario
+    public void dar_sillazo()
+    {
+
+        GameObject modelo_sillazo = Instantiate(sillazo, transform.position, transform.rotation);
+        modelo_sillazo.transform.SetParent(null);
+
+        Destroy (gameObject);
+
+        //Falta que desaparezca el modelo de sillazo y vuelva el jugador
+    }
+
     public void usar_objeto()
     {
         AgarrableComponente objeto = null;
@@ -157,7 +172,9 @@ public class SistemaInventarioJugador : MonoBehaviour
         {
             Debug.Log("OBJETO UTILIZADO: " + objeto.nombre_actual);
 
-            Destroy(objeto.gameObject);
+            dar_sillazo();
+            Destroy(objeto.gameObject); 
+
         }
     }
 }
