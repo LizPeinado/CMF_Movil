@@ -7,11 +7,27 @@ public class RecogibleComponente : MonoBehaviour, InteractuableComportamiento{
 
     public string nombre_del_objeto;
 
-    public void accion_consumible(){
+    //SILLAZO
+    public GameObject sillazo;
+    // public GameObject objeto_a_desactivar;
 
+    public void accion_consumible()
+    {
+        
     }
 
-    public void accion_golpazo(){
+    public void accion_golpazo()
+    {
+
+        /*GameObject modelo_sillazo = Instantiate(sillazo, transform.position, transform.rotation);
+        modelo_sillazo.transform.SetParent(null);
+
+        Destroy (gameObject);
+        /*if (objeto_a_desactivar != null) {
+            
+        }*/
+
+        //Falta que desaparezca el modelo de sillazo y vuelva el jugador
         
     }
 
@@ -21,6 +37,7 @@ public class RecogibleComponente : MonoBehaviour, InteractuableComportamiento{
 
     public void colocar_en(Transform ubicacion){
         transform.position = new Vector3(0,-10,0);
+
     }
     
     void Start()

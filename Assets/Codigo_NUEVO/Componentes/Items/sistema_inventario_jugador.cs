@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class SistemaInventarioJugador : MonoBehaviour
 {
@@ -12,8 +13,11 @@ public class SistemaInventarioJugador : MonoBehaviour
 
     private AgarrableComponente objeto_cercano;
 
+    private GameObject jugador;
+
     //SILLAZO
     public GameObject sillazo;
+   // public GameObject objeto_a_desactivar;
 
     void Start()
     {
@@ -147,7 +151,12 @@ public class SistemaInventarioJugador : MonoBehaviour
         GameObject modelo_sillazo = Instantiate(sillazo, transform.position, transform.rotation);
         modelo_sillazo.transform.SetParent(null);
 
-        Destroy (gameObject);
+        //Destroy (gameObject);
+        gameObject.SetActive(false);
+        
+        if(gameObject == null){
+            gameObject.SetActive(true);
+        }
 
         //Falta que desaparezca el modelo de sillazo y vuelva el jugador
     }
@@ -174,7 +183,6 @@ public class SistemaInventarioJugador : MonoBehaviour
 
             dar_sillazo();
             Destroy(objeto.gameObject); 
-
         }
     }
 }

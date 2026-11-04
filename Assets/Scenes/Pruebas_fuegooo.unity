@@ -3604,6 +3604,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ff175b6eca4490e4699c89b302b8c7e2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 794958137}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ff175b6eca4490e4699c89b302b8c7e2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 794958140}
   m_SourcePrefab: {fileID: 100100000, guid: ff175b6eca4490e4699c89b302b8c7e2, type: 3}
 --- !u!1 &481361472
 GameObject:
@@ -6838,6 +6841,21 @@ MonoBehaviour:
   "pu\xF1o_derecho": {fileID: 1605770475}
   pie_izquierdo: {fileID: 1605770475}
   pie_derecho: {fileID: 1605770475}
+--- !u!114 &794958140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794958131}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6a64eb840c5bd448f46dd18f54197a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SistemaInventarioJugador
+  mano_derecha: {fileID: 0}
+  mano_izquierda: {fileID: 0}
+  sillazo: {fileID: 1079384474}
 --- !u!1 &805050268
 GameObject:
   m_ObjectHideFlags: 0
