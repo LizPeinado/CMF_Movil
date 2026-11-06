@@ -141,8 +141,30 @@
                 },
                 {
                     "name": "",
+                    "id": "f1cc5f20-f8ec-4c47-8145-2c286f893d9d",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GolpeDebil",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "389b1ab5-c8dc-470b-b9ce-9c105434c668",
                     "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GolpeFuerte",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c863130-a49a-41d5-9847-c3d3b36bacd8",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -176,6 +198,17 @@
                     "name": "",
                     "id": "73fb04f4-a47f-4df0-bcaa-aca17022a9e0",
                     "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GolpeMedio",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf3d9f36-90b4-43d9-94c7-8d608504f4f5",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
