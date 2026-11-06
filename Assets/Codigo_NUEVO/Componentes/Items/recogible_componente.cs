@@ -1,54 +1,75 @@
 using UnityEngine;
 
-public class RecogibleComponente : MonoBehaviour, InteractuableComportamiento{
+public class RecogibleComponente : MonoBehaviour, InteractuableComportamiento
+{
+    [SerializeField]
+    private TipoItem tipo_actual;
 
-    public TipoItem tipo {get; set;}
-    public string nombre {get; set;}
+    public TipoItem tipo
+    {
+        get { return tipo_actual; }
+        set { tipo_actual = value; }
+    }
+
+    public string nombre { get; set; }
 
     public string nombre_del_objeto;
 
-    //SILLAZO
-    public GameObject sillazo;
-    // public GameObject objeto_a_desactivar;
+    [Header("Modelo de la accion")]
+    public GameObject modelo_golpazo;
 
-    public void accion_consumible()
-    {
-        
-    }
-
-    public void accion_golpazo()
-    {
-
-        /*GameObject modelo_sillazo = Instantiate(sillazo, transform.position, transform.rotation);
-        modelo_sillazo.transform.SetParent(null);
-
-        Destroy (gameObject);
-        /*if (objeto_a_desactivar != null) {
-            
-        }*/
-
-        //Falta que desaparezca el modelo de sillazo y vuelva el jugador
-        
-    }
-
-    public void soltar(){
-
-    }
-
-    public void colocar_en(Transform ubicacion){
-        transform.position = new Vector3(0,-10,0);
-
-    }
-    
     void Start()
     {
-        tipo = TipoItem.consumible;
         nombre = nombre_del_objeto;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void accion_consumible()
     {
-        
+        Debug.Log("OBJETO CONSUMIDO: " + nombre);
+    }
+
+    public void accion_golpazo(GameObject jugador)
+    {
+        if(tipo != TipoItem.golpazo)
+        {
+            return;
+        }
+
+        if(modelo_golpazo == null)
+        {
+            Debug.LogError("NO SE ASIGNO EL MODELO DE: " + nombre);
+            return;
+        }
+
+        GameObject modelo = Instantiate(
+            modelo_golpazo,
+            jugador.transform.position,
+            jugador.transform.rotation
+        );
+
+        ControladorAnimacionObjeto controlador =
+            modelo.GetComponent<ControladorAnimacionObjeto>();
+
+        if(controlador != null)
+        {
+            controlador.iniciar(jugador);
+        }
+        else
+        {
+            //Debug.LogError("FALTA ControladorAnimacionObjeto EN EL PREFAB");
+            Destroy(modelo);
+        }
+    }
+
+    public void colocar_en(Transform ubicacion)
+    {
+        transform.SetParent(ubicacion);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
+
+    public void soltar()
+    {
+        transform.SetParent(null);
     }
 }

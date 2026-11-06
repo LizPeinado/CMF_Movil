@@ -20,7 +20,9 @@ public class Etapa3Tutorial : MonoBehaviour
     private Cerebro_enemigo enemigo;
     private int salud_anterior;
     private bool regenerando = false;
+    
     //
+    public float tiempo_espera = 2f;
 
     void Start()
     {
@@ -180,9 +182,7 @@ public class Etapa3Tutorial : MonoBehaviour
 
             Debug.Log("ETAPA 3 COMPLETADA");
 
-            controlador_etapas.cambiar_etapa(
-                EtapasTutorial.defender
-            );
+            StartCoroutine(esperar_para_siguiente_etapa());
         }
     }
 
@@ -194,5 +194,19 @@ public class Etapa3Tutorial : MonoBehaviour
         }
 
         cajita.text = "Estamos en la etapa 3, dale en la madre (U - I - O)";
+    }
+
+    IEnumerator esperar_para_siguiente_etapa()
+    {
+        controlador_etapas.caja_dialogos.text = "yAy";
+        
+        // Esperar para que se pueda observar la secuencia.
+        yield return new WaitForSecondsRealtime(tiempo_espera);
+
+        Debug.Log("ETAPA COMPLETADA");
+
+        controlador_etapas.cambiar_etapa(
+                EtapasTutorial.defender
+        );
     }
 }

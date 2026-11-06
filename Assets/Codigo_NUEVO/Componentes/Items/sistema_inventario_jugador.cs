@@ -17,7 +17,10 @@ public class SistemaInventarioJugador : MonoBehaviour
 
     //SILLAZO
     public GameObject sillazo;
-   // public GameObject objeto_a_desactivar;
+
+   // CONTROL DEL TUTORIAL
+    public bool puede_usar_objeto = false;
+    public bool objeto_utilizado = false;
 
     void Start()
     {
@@ -143,9 +146,64 @@ public class SistemaInventarioJugador : MonoBehaviour
             }
         }
     }
+    
+    
+    public void usar_objeto()
+    {
+        if(!puede_usar_objeto)
+        {
+            Debug.Log("TODAVIA NO SE PUEDEN UTILIZAR OBJETOS");
+            return;
+        }
+
+        AgarrableComponente agarrable = null;
+        RecogibleComponente objeto = null;
+
+        // Revisar la mano derecha.
+        if(mano_derecha != null && mano_derecha.ocupada)
+        {
+            agarrable = mano_derecha.objeto_agarrado;
+            mano_derecha.liberar();
+        }
+        // Revisar la mano izquierda.
+        else if(mano_izquierda != null && mano_izquierda.ocupada)
+        {
+            agarrable = mano_izquierda.objeto_agarrado;
+            mano_izquierda.liberar();
+        }
+
+        if(agarrable != null)
+        {
+            objeto = agarrable.GetComponent<RecogibleComponente>();
+
+            if(objeto != null)
+            {
+                if(objeto.tipo == TipoItem.golpazo)
+                {
+                    objeto.accion_golpazo(gameObject);
+                    objeto_utilizado = true;
+                }
+                else if(objeto.tipo == TipoItem.consumible)
+                {
+                    objeto.accion_consumible();
+                }
+
+                objeto_utilizado = true;
+            }
+            else
+            {
+                Debug.LogError("EL OBJETO NO TIENE RecogibleComponente");
+            }
+
+            Destroy(agarrable.gameObject);
+        }
+    }
+
+
+
 
     //Cambiar esto de sistema inventario
-    public void dar_sillazo()
+    /*public void dar_sillazo()
     {
 
         GameObject modelo_sillazo = Instantiate(sillazo, transform.position, transform.rotation);
@@ -159,9 +217,9 @@ public class SistemaInventarioJugador : MonoBehaviour
         }
 
         //Falta que desaparezca el modelo de sillazo y vuelva el jugador
-    }
+    }*/
 
-    public void usar_objeto()
+    /*public void usar_objeto()
     {
         AgarrableComponente objeto = null;
 
@@ -184,7 +242,9 @@ public class SistemaInventarioJugador : MonoBehaviour
             dar_sillazo();
             Destroy(objeto.gameObject); 
         }
-    }
+    }*/
 }
+
+
 
 

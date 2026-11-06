@@ -11,6 +11,8 @@ public class Etapa4Tutorial : MonoBehaviour
     private bool etapa_iniciada = false;
     private bool etapa_completada = false;
 
+    public float tiempo_espera = 2f;
+
     
     void Start()
     {
@@ -62,6 +64,7 @@ public class Etapa4Tutorial : MonoBehaviour
         {
             etapa_completada = true;
             Debug.Log("ETAPA 4 COMPLETADA");
+            StartCoroutine(esperar_para_siguiente_etapa());
         }
     }
     void dialogos_etapa3(TMP_Text cajita){
@@ -70,5 +73,19 @@ public class Etapa4Tutorial : MonoBehaviour
             controlador_etapas.cambiar_etapa(EtapasTutorial.defender);
             iniciar_etapa();
         }
+    }
+
+    IEnumerator esperar_para_siguiente_etapa()
+    {
+        controlador_etapas.caja_dialogos.text = "yAy";
+        
+        // Esperar para que se pueda observar la secuencia.
+        yield return new WaitForSecondsRealtime(tiempo_espera);
+
+        Debug.Log("ETAPA COMPLETADA");
+
+        controlador_etapas.cambiar_etapa(
+                EtapasTutorial.usar_item
+        );
     }
 }

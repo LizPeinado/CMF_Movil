@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
+
 
 public class Etapa2Tutorial : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class Etapa2Tutorial : MonoBehaviour
     private bool agacharse_realizado = false;
 
     private bool etapa_completada = false;
+
+    //
+    public float tiempo_espera = 2f;
 
     void Start()
     {
@@ -84,7 +89,7 @@ public class Etapa2Tutorial : MonoBehaviour
 
             //controlador_etapas.cambiar_etapa(EtapasTutorial.ataques);
 
-            controlador_etapas.cambiar_etapa(EtapasTutorial.ataques);
+            StartCoroutine(esperar_para_siguiente_etapa());
         }
     }
 
@@ -95,5 +100,19 @@ public class Etapa2Tutorial : MonoBehaviour
             controlador_etapas.cambiar_etapa(EtapasTutorial.saltar_agacharse);
             iniciar_etapa();
         }
+    }
+
+    IEnumerator esperar_para_siguiente_etapa()
+    {
+        controlador_etapas.caja_dialogos.text = "yAy";
+        
+        // Esperar para que se pueda observar la secuencia.
+        yield return new WaitForSecondsRealtime(tiempo_espera);
+
+        Debug.Log("ETAPA COMPLETADA");
+
+        controlador_etapas.cambiar_etapa(
+                EtapasTutorial.ataques
+        );
     }
 }
