@@ -24,6 +24,7 @@ public class ControladorJugador : movimientos_personajes{
     
    // private InputAction patada_debil;
     //private InputAction patada_fuerte;
+    private ControladorDefensa controlador_defensa;
 
     //Manos y Pies Para ataques (limpiar al rato)
     
@@ -52,6 +53,9 @@ public class ControladorJugador : movimientos_personajes{
         rigid__body = GetComponent<Rigidbody>();
         animator_jugador = GetComponent<Animator>();
         sistema_salud = GetComponent<Sistema_salud>(); //pa defender
+
+        controlador_defensa = GetComponent<ControladorDefensa>();
+        hay_gente_escuchando_el_estado += actualizar_defensa;
 
         if(sistema_salud != null)
         {
@@ -189,8 +193,30 @@ public class ControladorJugador : movimientos_personajes{
         }
     }
 
+    void actualizar_defensa(EstadosMovimiento estado_nuevo)
+    {
+        if(controlador_defensa == null) return;
+
+        if(estado_nuevo == EstadosMovimiento.defender)
+        {
+            controlador_defensa.activar_defensa(false);
+        }
+        else if(estado_nuevo == EstadosMovimiento.defender_agachao)
+        {
+            controlador_defensa.activar_defensa(true);
+        }
+        else
+        {
+            controlador_defensa.quitar_defensa();
+        }
+    }
+
     void FixedUpdate(){
         if(esta_agachado)
+        {
+            return;
+        }
+        if(estado_actual == EstadosMovimiento.aturdido)
         {
             return;
         }

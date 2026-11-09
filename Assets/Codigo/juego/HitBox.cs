@@ -1,7 +1,18 @@
 using UnityEngine;
 
+
+public enum TipoHitBox
+{
+    cuerpo,
+    cabeza,
+    baja
+}
+
 public class HitBox : MonoBehaviour
 {
+    public TipoHitBox tipo_hitbox;
+
+
     public Sistema_salud salud_del_padre;
 
     public bool es_hitbox_delantera = true;

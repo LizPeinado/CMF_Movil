@@ -11,7 +11,7 @@ public class ControlAnimacionMovimiento : MonoBehaviour
     {
         control_animacion = GetComponent<Animator>();
         //AQUI LLAMA A JUGADOR MOVIMIENTO
-        var control_de_movimiento = GetComponent<JugadorMovimiento>();
+        var control_de_movimiento = GetComponent<PersonajesHitbox>();
         control_de_movimiento.hay_gente_escuchando_el_estado += al_cambiar_de_estado_del_control_de_movimiento;
 
     }

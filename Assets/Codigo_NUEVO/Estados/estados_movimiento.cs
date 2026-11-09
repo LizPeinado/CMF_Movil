@@ -8,5 +8,6 @@ public enum EstadosMovimiento{
     defender_agachao,
     usar_item,
     recibir_golpe,
+    aturdido,
     morido
 }

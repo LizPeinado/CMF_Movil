@@ -23,6 +23,7 @@ public class ControlEnemigoAnimaciones : MonoBehaviour
         control_animacion.SetBool("Quieto", false);
         control_animacion.SetBool("Retrocede", false);
         control_animacion.SetBool("Salta", false);
+        control_animacion.SetBool("Defender", false);
 
         switch (nuevo_estado)
         {
@@ -34,6 +35,9 @@ public class ControlEnemigoAnimaciones : MonoBehaviour
             break;
             case EstadosMovimiento.saltando:
                 control_animacion.SetBool("Salta", true);
+            break;
+            case EstadosMovimiento.defender:
+                control_animacion.SetBool("Defender", true);
             break;
         }
     }

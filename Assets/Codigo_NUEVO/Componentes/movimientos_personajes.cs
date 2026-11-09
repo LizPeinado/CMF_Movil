@@ -19,16 +19,6 @@ public class movimientos_personajes : MonoBehaviour
 
     public bool puede_atacar = true;
 
-    //Recibir HITBOXES dependiendo personaje
-    /*[Header("Hitboxes")]
-    public GameObject hitbox_delantera_completa;
-    public GameObject hitbox_trasera_completa;
-
-    public GameObject hitbox_delantera_agachado;
-    public GameObject hitbox_trasera_agachado;
-
-    public GameObject hitbox_cabeza;*/
-
     private bool siguiente_golpe_izquierdo = true;
 
     public GolpesManos puño_izquierdo;
@@ -96,57 +86,26 @@ public class movimientos_personajes : MonoBehaviour
         }
     }
 
-    public void defender(){
-        if(estado_actual != EstadosMovimiento.Retrocediendo){
-            return;
-        }
+    // DEFENSA DE PIE
+    public void cubrirse_de_pie()
+    {
+        esta_agachado = false;
         cambiarEstado(EstadosMovimiento.defender);
-        
-        // !! CAMBIAR HITBOXES
     }
 
-    public void defender_agachao()
+    // DEFENSA AGACHADA
+    public void cubrirse_agachado()
     {
-        if(estado_actual != EstadosMovimiento.agachado){
-            return;
-        }
+        esta_agachado = true;
         cambiarEstado(EstadosMovimiento.defender_agachao);
-        // !! CAMBIAR HITBOXES
     }
 
-    /*
-    public void hacer_golpe_debil(Animator animator)
+    // SALIR DE LA DEFENSA
+    public void quitar_defensa()
     {
-        if(siguiente_golpe_izquierdo)
-        {
-            animator.SetTrigger("Golpe2");
-        }
-        else
-        {
-            animator.SetTrigger("Golpe3");
-        }
-
-        siguiente_golpe_izquierdo = !siguiente_golpe_izquierdo;
-        StartCoroutine(activar_ataque(puño_izquierdo,puño_derecho,10,0.2f));
+        esta_agachado = false;
+        cambiarEstado(EstadosMovimiento.quieto);
     }
-
-    public void hacer_golpe_fuerte(Animator animator){
-        animator.SetTrigger("GolpeFuerte");
-        StartCoroutine(activar_ataque(puño_izquierdo,puño_derecho,30,1f));
-    }
-
-    public void hacer_patada_debil(Animator animator){
-        animator.SetTrigger("PatadaDebil");
-        
-        StartCoroutine(activar_ataque(pie_izquierdo,pie_derecho,20,1f));
-    }
-
-    public void hacer_patada_fuerte(Animator animator)
-    {
-        animator.SetTrigger("PatadaFuerte");
-        StartCoroutine(activar_ataque(pie_izquierdo,pie_derecho,60,0.35f));
-    }
-    */
 
     public void hacer_golpe_debil(Animator animator)
     {
@@ -189,9 +148,6 @@ public class movimientos_personajes : MonoBehaviour
         StartCoroutine(activar_ataque(puño_izquierdo,puño_derecho,30,1f));
     }
 
-
-
-
     public void cambiarEstado(EstadosMovimiento estado_nuevo){
         estado_actual = estado_nuevo;
 
@@ -211,5 +167,13 @@ public class movimientos_personajes : MonoBehaviour
 
         golpe1.ataque_activo = false;
         golpe2.ataque_activo = false;
+    }
+
+    public bool esta_defendiendo
+    {
+        get
+        {
+            return estado_actual == EstadosMovimiento.defender || estado_actual == EstadosMovimiento.defender_agachao;
+        }
     }
 }

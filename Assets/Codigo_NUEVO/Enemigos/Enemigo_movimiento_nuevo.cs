@@ -13,6 +13,7 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
     public bool puede_moverse = false;
     public bool retrocediendo = false;
     public bool esta_saltando = false;
+    public bool esta_agachado = false;
     public float fuerza_salto = 700f;
 
     void Start()
@@ -22,7 +23,7 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
 
         if(a_quien_seguir == null)
         {
-            JugadorMovimiento jugador = FindFirstObjectByType<JugadorMovimiento>();
+            PersonajesHitbox jugador = FindFirstObjectByType<PersonajesHitbox>();
 
             if(jugador != null)
             {

@@ -17,10 +17,15 @@ public class Cerebro_enemigo : MonoBehaviour
 
     private EstadosEnemigo estado_anterior;
 
+    private ControladorDefensa defensa;
+
+    public bool defender_agachado = false;
+
     private void Start()
     {
         movimiento = GetComponent<EnemigoMovimientoNuevo>();
         ataques = GetComponent<EnemigoAtaquesNuevo>();
+        defensa = GetComponent<ControladorDefensa>();
         estado_anterior = estado_actual;
         aplicar_estado();
     }
@@ -72,8 +77,11 @@ public class Cerebro_enemigo : MonoBehaviour
 
         movimiento.puede_moverse = false;
         movimiento.retrocediendo = false;
+        movimiento.esta_agachado = false;
 
         ataques.puede_atacar = false;
+
+        defensa.quitar_defensa();
     }
 
     void estado_solo_ataque()
@@ -82,6 +90,9 @@ public class Cerebro_enemigo : MonoBehaviour
 
         movimiento.puede_moverse = true;
         movimiento.retrocediendo = false;
+        movimiento.esta_agachado = false;
+        
+        defensa.quitar_defensa();
 
         ataques.puede_atacar = true;
         ataques.solo_ataque_debil = true;
@@ -94,7 +105,11 @@ public class Cerebro_enemigo : MonoBehaviour
         movimiento.puede_moverse = true;
         movimiento.retrocediendo = true;
 
+        movimiento.esta_agachado = defender_agachado;
+
         ataques.puede_atacar = false;
+
+        defensa.activar_defensa(defender_agachado);
     }
 
     void estado_pelea()
@@ -103,6 +118,9 @@ public class Cerebro_enemigo : MonoBehaviour
 
         movimiento.puede_moverse = true;
         movimiento.retrocediendo = false;
+        movimiento.esta_agachado = false;
+        
+        defensa.quitar_defensa();
 
         ataques.puede_atacar = true;
         ataques.solo_ataque_debil = false;

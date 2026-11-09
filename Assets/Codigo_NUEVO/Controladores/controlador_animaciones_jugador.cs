@@ -18,6 +18,7 @@ public class ControladorAnimacionJugador : MonoBehaviour{
     {
         controlador_animacion.SetBool("Quieto",false);
         controlador_animacion.SetBool("Retrocede", false);
+        controlador_animacion.SetBool("Caminar",false);
         controlador_animacion.SetBool("Agachado", false);
         controlador_animacion.SetBool("Defender",false);
 
@@ -27,6 +28,7 @@ public class ControladorAnimacionJugador : MonoBehaviour{
             break;
 
             case EstadosMovimiento.caminando:
+                controlador_animacion.SetBool("Caminar", true);
             break;
 
             case EstadosMovimiento.Retrocediendo:

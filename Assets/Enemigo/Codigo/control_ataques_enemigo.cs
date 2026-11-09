@@ -48,7 +48,7 @@ public class ControlAtaquesEnemigo : MonoBehaviour
         salud = GetComponent<Sistema_salud>();
         animator = GetComponent<Animator>();//referencia al primer Animator que encuentre
         
-        JugadorMovimiento jugador = FindFirstObjectByType<JugadorMovimiento>();
+        PersonajesHitbox jugador = FindFirstObjectByType<PersonajesHitbox>();
 
         if(jugador != null)
         {
@@ -130,7 +130,7 @@ public class ControlAtaquesEnemigo : MonoBehaviour
 
     void elegir_ataque()
     {
-        JugadorMovimiento jugador = FindFirstObjectByType<JugadorMovimiento>();
+        PersonajesHitbox jugador = FindFirstObjectByType<PersonajesHitbox>();
 
         bool jugador_agachado = false;
 
@@ -191,7 +191,7 @@ public class ControlAtaquesEnemigo : MonoBehaviour
         }
     }
 
-    void ataques_jefe_final(JugadorMovimiento jugador, bool jugador_agachado)
+    void ataques_jefe_final(PersonajesHitbox jugador, bool jugador_agachado)
     {
         // SI EL JUGADOR SALTA
         if(jugador != null && jugador.esta_saltando)
