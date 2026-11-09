@@ -14,6 +14,7 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
     public bool retrocediendo = false;
     public bool esta_saltando = false;
     public bool esta_agachado = false;
+    public bool estado_cubriendose = false;
     public float fuerza_salto = 700f;
 
     private Animator animator;
@@ -57,12 +58,14 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
             else
             {
                 control_movimiento.destination = a_quien_seguir.transform.position;
+                animator.SetBool("Caminar", true);
             }
         }
         else
         {
             control_movimiento.destination = transform.position;
         }
+    
     }
 
     public void saltar()
@@ -71,7 +74,6 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
         {
             return;
         } 
-        animator.SetBool("Salta", true);
 
         Ray rayo_hacia_el_suelo = new Ray(transform.position, Vector3.down);
         RaycastHit chocamos_con;

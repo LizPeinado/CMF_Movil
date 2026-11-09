@@ -204,7 +204,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Costal_caminar
+  m_Name: Caminar
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -458,6 +458,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Caminar
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -564,7 +570,7 @@ AnimatorStateMachine:
     m_Position: {x: 30, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3816911309097815640}
-    m_Position: {x: -210, y: 280, z: 0}
+    m_Position: {x: -330, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7577765122659983800}
     m_Position: {x: -270, y: 20, z: 0}
@@ -573,7 +579,7 @@ AnimatorStateMachine:
     m_Position: {x: -60, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2147345760601178324}
-    m_Position: {x: 270, y: 140, z: 0}
+    m_Position: {x: 280, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7356166322860266491}
     m_Position: {x: 150, y: 20, z: 0}
@@ -588,7 +594,7 @@ AnimatorStateMachine:
     m_Position: {x: 460, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7232363005220171840}
-    m_Position: {x: 300, y: -70, z: 0}
+    m_Position: {x: -180, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 505831899419199449}
     m_Position: {x: -70, y: 390, z: 0}
@@ -597,7 +603,7 @@ AnimatorStateMachine:
     m_Position: {x: 230, y: 490, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6832033683933969927}
-    m_Position: {x: -280, y: 410, z: 0}
+    m_Position: {x: -310, y: 410, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 6931586703149118361}
@@ -624,8 +630,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Quieto
+  - m_ConditionMode: 1
+    m_ConditionEvent: Caminar
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3816911309097815640}
@@ -745,8 +751,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Quieto
+  - m_ConditionMode: 2
+    m_ConditionEvent: Caminar
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1180394237528456494}
