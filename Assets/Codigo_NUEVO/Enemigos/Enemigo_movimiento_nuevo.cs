@@ -58,7 +58,7 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
             else
             {
                 control_movimiento.destination = a_quien_seguir.transform.position;
-                animator.SetBool("Caminar", true);
+                //animator.SetBool("Caminar", true);
             }
         }
         else
