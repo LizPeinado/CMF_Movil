@@ -14,7 +14,100 @@ public class GolpesManos : MonoBehaviour
         a_quien_le_pego = new List<GameObject>();
     }
 
+    
     void hacer_daño(GameObject a_quien)
+    {
+        if(!ataque_activo) return;
+
+        HitBox hitbox_golpeada = a_quien.GetComponent<HitBox>();
+
+        if(hitbox_golpeada == null) return;
+
+        Sistema_salud salud_de_a_quien_golpeo =
+            hitbox_golpeada.salud_del_padre;
+
+        if(salud_de_a_quien_golpeo == null) return;
+
+        // Buscar la defensa desde la hitbox hacia sus padres
+        ControladorDefensa defensa =
+            hitbox_golpeada.GetComponentInParent<ControladorDefensa>();
+
+        GameObject personaje = salud_de_a_quien_golpeo.gameObject;
+
+        if(a_quien_le_pego.Contains(personaje)) return;
+
+        if(defensa != null && defensa.esta_defendiendo)
+        {
+            bool golpe_alto =
+                hitbox_golpeada.tipo_hitbox == TipoHitBox.cabeza;
+
+            bool golpe_bajo =
+                hitbox_golpeada.tipo_hitbox == TipoHitBox.baja;
+
+            Debug.Log("ZONA GOLPEADA: " + hitbox_golpeada.tipo_hitbox);
+
+            // Defensa de pie: solamente la baja la rompe
+            if(!defensa.defensa_agachada && golpe_bajo)
+            {
+                Debug.Log("GOLPE BAJO: DEFENSA ROTA");
+
+                defensa.romper_defensa();
+
+                Cerebro_enemigo cerebro =
+                    personaje.GetComponent<Cerebro_enemigo>();
+
+                if(cerebro != null)
+                {
+                    cerebro.quitar_animacion_defensa();
+                }
+
+                ControladorAturdimiento aturdimiento =
+                    defensa.GetComponent<ControladorAturdimiento>();
+
+                if(aturdimiento != null)
+                    aturdimiento.romper_defensa();
+            }
+            // Defensa agachada: solamente la alta la rompe
+            else if(defensa.defensa_agachada && golpe_alto)
+            {
+                Debug.Log("GOLPE ALTO: DEFENSA ROTA");
+
+                defensa.romper_defensa();
+
+                Cerebro_enemigo cerebro =
+                    personaje.GetComponent<Cerebro_enemigo>();
+
+                if(cerebro != null)
+                {
+                    cerebro.quitar_animacion_defensa();
+                }
+
+                ControladorAturdimiento aturdimiento =
+                    defensa.GetComponent<ControladorAturdimiento>();
+
+                if(aturdimiento != null)
+                    aturdimiento.romper_defensa();
+            }
+            else
+            {
+                Debug.Log("GOLPE BLOQUEADO");
+            }
+
+            a_quien_le_pego.Add(personaje);
+            Invoke(nameof(limpiar_lista_golpes), 0.2f);
+            return;
+        }
+
+        // Si no está defendiendo, recibe daño
+        salud_de_a_quien_golpeo.restar_salud(daño);
+        hitbox_golpeada.empujar();
+
+        a_quien_le_pego.Add(personaje);
+        Invoke(nameof(limpiar_lista_golpes), 0.2f);
+    }
+
+
+    /*void hacer_daño(GameObject a_quien)
     {
         if(!ataque_activo) return;
 
@@ -46,7 +139,7 @@ public class GolpesManos : MonoBehaviour
             // Defensa de pie: solamente la baja la rompe
             if(!defensa.defensa_agachada && golpe_bajo)
             {
-                defensa.quitar_defensa();
+                defensa.romper_defensa();
 
                 ControladorAturdimiento aturdimiento =
                     personaje.GetComponent<ControladorAturdimiento>();
@@ -60,7 +153,7 @@ public class GolpesManos : MonoBehaviour
             // Defensa agachada: solamente la alta la rompe
             else if(defensa.defensa_agachada && golpe_alto)
             {
-                defensa.quitar_defensa();
+                defensa.romper_defensa();
 
                 ControladorAturdimiento aturdimiento =
                     personaje.GetComponent<ControladorAturdimiento>();
@@ -87,7 +180,7 @@ public class GolpesManos : MonoBehaviour
 
         a_quien_le_pego.Add(personaje);
         Invoke(nameof(limpiar_lista_golpes), 0.2f);
-    }
+    }*/
 
     void OnTriggerStay(Collider golpear)
     {

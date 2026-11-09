@@ -81,5 +81,3 @@ public class ControladorAturdimiento : MonoBehaviour
             ataques_enemigo.puede_atacar = ataque_anterior;
     }
 }
-
-

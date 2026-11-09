@@ -16,8 +16,11 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
     public bool esta_agachado = false;
     public float fuerza_salto = 700f;
 
+    private Animator animator;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         rigid_body = GetComponent<Rigidbody>();
         control_movimiento = GetComponent<NavMeshAgent>();
 
@@ -34,6 +37,10 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
 
     void Update()
     {
+        if(esta_saltando)
+        {
+            return;
+        }
         if(!puede_moverse)
         {
             control_movimiento.destination = transform.position;
@@ -64,6 +71,7 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
         {
             return;
         } 
+        animator.SetBool("Salta", true);
 
         Ray rayo_hacia_el_suelo = new Ray(transform.position, Vector3.down);
         RaycastHit chocamos_con;
@@ -86,6 +94,7 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
         if(colision.gameObject.CompareTag("suelo"))
         {
             esta_saltando = false;
+            animator.SetBool("Salta", false);
             control_movimiento.enabled = true;
         }
     }

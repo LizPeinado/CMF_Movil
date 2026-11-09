@@ -85,7 +85,7 @@ public class Etapa4Tutorial : MonoBehaviour
         Debug.Log("ETAPA COMPLETADA");
 
         controlador_etapas.cambiar_etapa(
-                EtapasTutorial.usar_item
+                EtapasTutorial.quitar_defensa
         );
     }
 }

@@ -122,7 +122,7 @@ public class Etapa6Tutorial : MonoBehaviour
         inventario.puede_usar_objeto = false;
 
         controlador_etapas.cambiar_etapa(
-            EtapasTutorial.ataque_especial
+            EtapasTutorial.combate_final
         );
     }
 }

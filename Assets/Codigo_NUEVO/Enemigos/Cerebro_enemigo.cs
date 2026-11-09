@@ -21,12 +21,17 @@ public class Cerebro_enemigo : MonoBehaviour
 
     public bool defender_agachado = false;
 
+    public bool retroceder_al_defender = false;
+
+    private Animator animator;
+
     private void Start()
     {
         movimiento = GetComponent<EnemigoMovimientoNuevo>();
         ataques = GetComponent<EnemigoAtaquesNuevo>();
         defensa = GetComponent<ControladorDefensa>();
         estado_anterior = estado_actual;
+        animator = GetComponent<Animator>();
         aplicar_estado();
     }
 
@@ -80,8 +85,10 @@ public class Cerebro_enemigo : MonoBehaviour
         movimiento.esta_agachado = false;
 
         ataques.puede_atacar = false;
+        ataques.solo_ataque_debil = false;
 
         defensa.quitar_defensa();
+        quitar_animacion_defensa();
     }
 
     void estado_solo_ataque()
@@ -93,6 +100,7 @@ public class Cerebro_enemigo : MonoBehaviour
         movimiento.esta_agachado = false;
         
         defensa.quitar_defensa();
+        quitar_animacion_defensa();
 
         ataques.puede_atacar = true;
         ataques.solo_ataque_debil = true;
@@ -102,14 +110,23 @@ public class Cerebro_enemigo : MonoBehaviour
     {
         Debug.Log("ENEMIGO: CUBRIENDOSE");
 
-        movimiento.puede_moverse = true;
-        movimiento.retrocediendo = true;
+        movimiento.puede_moverse = retroceder_al_defender;
+        movimiento.retrocediendo = retroceder_al_defender;
 
         movimiento.esta_agachado = defender_agachado;
 
         ataques.puede_atacar = false;
+        ataques.solo_ataque_debil = false;
 
         defensa.activar_defensa(defender_agachado);
+
+        animator.SetBool("DefensaPie", !defender_agachado);
+        animator.SetBool("DefensaAgachado", defender_agachado);
+    }
+    public void quitar_animacion_defensa()
+    {
+        animator.SetBool("DefensaPie", false);
+        animator.SetBool("DefensaAgachado", false);
     }
 
     void estado_pelea()
@@ -121,6 +138,7 @@ public class Cerebro_enemigo : MonoBehaviour
         movimiento.esta_agachado = false;
         
         defensa.quitar_defensa();
+        quitar_animacion_defensa();
 
         ataques.puede_atacar = true;
         ataques.solo_ataque_debil = false;

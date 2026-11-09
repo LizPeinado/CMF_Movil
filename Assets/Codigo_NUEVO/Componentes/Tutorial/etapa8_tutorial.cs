@@ -1,16 +1,24 @@
+
 using UnityEngine;
 
-public class etapa8_tutorial : MonoBehaviour
+public class Etapa8Tutorial : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public ControladorEtapas controlador;
+    public IA_Enemigo ia_enemigo;
 
-    // Update is called once per frame
+    private bool etapa_iniciada = false;
+
     void Update()
     {
-        
+        if(controlador.etapa_actual == EtapasTutorial.combate_final &&
+           !controlador.esta_en_pausa &&
+           !etapa_iniciada)
+        {
+            etapa_iniciada = true;
+
+            Debug.Log("ETAPA 8: COMBATE FINAL");
+
+            ia_enemigo.activar_ia();
+        }
     }
 }

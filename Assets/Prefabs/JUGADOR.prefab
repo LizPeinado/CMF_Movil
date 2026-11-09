@@ -4123,8 +4123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febace85818dc4946934183c69d8a935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitBox
-  tipo_hitbox: 0
-  salud_del_padre: {fileID: 0}
+  tipo_hitbox: 1
+  salud_del_padre: {fileID: 130681309230100864}
   es_hitbox_delantera: 1
   fuerza_empuje: 0.5
 --- !u!1 &8561803894888388842
@@ -4283,7 +4283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febace85818dc4946934183c69d8a935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitBox
-  tipo_hitbox: 0
+  tipo_hitbox: 2
   salud_del_padre: {fileID: 130681309230100864}
   es_hitbox_delantera: 1
   fuerza_empuje: 0
@@ -4744,6 +4744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ControladorDefensa
   esta_defendiendo: 0
   defensa_agachada: 0
+  defensa_rota: 0
 --- !u!114 &9213195388396978746
 MonoBehaviour:
   m_ObjectHideFlags: 0
