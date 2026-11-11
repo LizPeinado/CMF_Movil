@@ -4552,7 +4552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SistemaInventarioJugador
   mano_derecha: {fileID: 7031117685741532115}
   mano_izquierda: {fileID: 2287276313995902574}
-  sillazo: {fileID: 0}
+  sillazo: {fileID: 7538891158157606881, guid: 254fa05c445d1e8468445981c38ff971, type: 3}
   puede_usar_objeto: 0
   objeto_utilizado: 0
 --- !u!114 &8583614309571656295

@@ -1848,7 +1848,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7ef1142e737ab5f45ad804701e121b96, type: 2}
+  - {fileID: 2100000, guid: 8826956af6bfce045b8b58e890c0ce0a, type: 2}
+  - {fileID: 2100000, guid: a6ad9dec3dcdb554e85fbb8978d490b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2463,7 +2464,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PantallaMorido
   pantalla_a_mostrar: {fileID: 3042403758831018859}
-  sprite_personaje: {fileID: 0}
 --- !u!82 &6209912277112284059
 AudioSource:
   m_ObjectHideFlags: 0
