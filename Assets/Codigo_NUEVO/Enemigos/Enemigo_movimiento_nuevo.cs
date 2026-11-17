@@ -38,13 +38,16 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
 
     void Update()
     {
-        if(esta_saltando)
+        if(!control_movimiento.enabled || !control_movimiento.isOnNavMesh)
         {
+            animator.SetBool("Caminar", false);
             return;
         }
-        if(!puede_moverse)
+
+        if(!puede_moverse || esta_saltando || esta_agachado)
         {
             control_movimiento.destination = transform.position;
+            animator.SetBool("Caminar", false);
             return;
         }
 
@@ -54,50 +57,77 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
             {
                 Vector3 posicion_retroceso = transform.position - transform.forward * 3f;
                 control_movimiento.destination = posicion_retroceso;
+                animator.SetBool("Caminar", false);
             }
             else
             {
                 control_movimiento.destination = a_quien_seguir.transform.position;
-                //animator.SetBool("Caminar", true);
+                animator.SetBool("Caminar", true);
             }
         }
         else
         {
             control_movimiento.destination = transform.position;
+            animator.SetBool("Caminar", false);
         }
-    
     }
 
     public void saltar()
     {
         if(esta_saltando)
         {
+            Debug.Log("Ya está saltando");
             return;
-        } 
+        }
+
+        Debug.Log("INTENTANDO SALTAR");
 
         Ray rayo_hacia_el_suelo = new Ray(transform.position, Vector3.down);
         RaycastHit chocamos_con;
 
         if(Physics.Raycast(rayo_hacia_el_suelo, out chocamos_con, 1.1f))
         {
+            Debug.Log("OBJETO DETECTADO: " + chocamos_con.collider.name);
+            Debug.Log("ETIQUETA: " + chocamos_con.collider.tag);
+
             if(chocamos_con.collider.CompareTag("suelo"))
             {
-                control_movimiento.enabled = false;
-                rigid_body.AddForce(Vector3.up * fuerza_salto);
+                Debug.Log("SUELO DETECTADO, COMIENZA EL SALTO");
+
                 esta_saltando = true;
 
-                Debug.Log("ENEMIGO SALTO");
+                control_movimiento.enabled = false;
+
+                rigid_body.linearVelocity = Vector3.zero;
+
+                rigid_body.AddForce(Vector3.up * fuerza_salto);
+
+                animator.SetBool("Salta", true);
             }
+        }
+        else
+        {
+            Debug.Log("EL RAYCAST NO DETECTO NADA");
         }
     }
 
     void OnCollisionEnter(Collision colision)
     {
-        if(colision.gameObject.CompareTag("suelo"))
+        if(colision.gameObject.CompareTag("suelo") && esta_saltando)
         {
             esta_saltando = false;
+
             animator.SetBool("Salta", false);
-            control_movimiento.enabled = true;
+
+            rigid_body.linearVelocity = Vector3.zero;
+
+            NavMeshHit posicion_navmesh;
+
+            if(NavMesh.SamplePosition(transform.position, out posicion_navmesh, 2f, NavMesh.AllAreas))
+            {
+                control_movimiento.enabled = true;
+                control_movimiento.Warp(posicion_navmesh.position);
+            }
         }
     }
 }
