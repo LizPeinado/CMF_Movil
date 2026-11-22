@@ -39,7 +39,7 @@ public class ControladorJugador : movimientos_personajes{
     //RECIBIR INFORMACION DE PERSONAJE
     public float velocidad_movimiento = 5.0f;
 
-    private Animator animator_jugador;
+    public Animator animator_jugador;
     //cuando se tenga, minimo empezar con Jose
 
     //INFORMACION DE ENEMIGO
