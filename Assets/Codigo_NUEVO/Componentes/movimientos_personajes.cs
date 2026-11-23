@@ -169,6 +169,18 @@ public class movimientos_personajes : MonoBehaviour
         golpe2.ataque_activo = false;
     }
 
+    public void hacer_golpe_debil_agachado(Animator animator)
+    {
+        if(!puede_atacar)
+        {
+            return;
+        }
+
+        animator.SetTrigger("GolpeAgachado");
+
+        StartCoroutine(activar_ataque(puño_izquierdo, puño_derecho, 10, 0.2f));
+        }
+
     public bool esta_defendiendo
     {
         get

@@ -122,7 +122,14 @@ public class ControladorJugador : movimientos_personajes{
         Debug.Log("INPUT GOLPE DEBIL DETECTADO");
         golpe_debil_realizado = true;
 
-        hacer_golpe_debil(animator_jugador);
+        if(esta_agachado)
+        {
+            hacer_golpe_debil_agachado(animator_jugador);
+        }
+        else
+        {
+            hacer_golpe_debil(animator_jugador);
+        }
 
         //EN CASO DE OBJETO
         if(inventario != null)

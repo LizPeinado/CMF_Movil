@@ -99,4 +99,15 @@ public class EnemigoAtaquesNuevo : MonoBehaviour
         puño_izquierdo.ataque_activo = false;
         puño_derecho.ataque_activo = false;
     }
+
+
+
+    public void hacer_golpe_debil_agachado()
+    {
+        if(!puede_atacar || ataque_en_curso) return;
+
+        animator.SetTrigger("GolpeAgachado");
+
+        StartCoroutine(activar_ataque(10, 0.2f));
+    }
 }

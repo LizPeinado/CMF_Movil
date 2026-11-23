@@ -9060,7 +9060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8847443721807994864, guid: e72f9e2dd6666d94584e45b1dd4bfa62, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14042,7 +14042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1009abf9021e6bb4bad955dff1ba183d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IA_Enemigo
-  categoria: 1
+  categoria: 2
   salud_baja: 400
   duracion_defensa: 2
   tiempo_entre_decisiones: 1
@@ -14050,6 +14050,7 @@ MonoBehaviour:
   ia_activa: 0
   salud_jugador: {fileID: 0}
   duracion_agachado: 1.5
+  probabilidad_golpe_agachado: 50
 --- !u!1 &1779208281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de02e7cc14421a243aa760abf28214bc, type: 3}

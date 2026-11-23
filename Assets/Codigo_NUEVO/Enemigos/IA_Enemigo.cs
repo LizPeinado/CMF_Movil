@@ -344,10 +344,28 @@ public class IA_Enemigo : MonoBehaviour
         }
     }
 
+    public int probabilidad_golpe_agachado = 50; 
+//50 es la probabilidad para que golpe si se agacha
+
+
     IEnumerator agacharse_un_momento()
     {
         movimiento.esta_agachado = true;
         animator.SetBool("Agachado", true);
+
+        // Decidir si realiza un golpe débil agachado
+        int decision = Random.Range(0, 100);
+
+        if(decision < probabilidad_golpe_agachado)
+        {
+            ataques.hacer_golpe_debil_agachado();
+
+            // Esperar a que termine el ataque
+            while(ataques.ataque_en_curso)
+            {
+                yield return null;
+            }
+        }
 
         yield return new WaitForSeconds(duracion_agachado);
 
