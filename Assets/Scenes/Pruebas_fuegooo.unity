@@ -9526,6 +9526,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1796587655}
     m_Modifications:
+    - target: {fileID: 3419477881954888159, guid: cfbc372fcc9f043439187875500e18a3, type: 3}
+      propertyPath: m_Constraints
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 4677984128051093702, guid: cfbc372fcc9f043439187875500e18a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6727394
@@ -9566,6 +9570,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4990484925216548405, guid: cfbc372fcc9f043439187875500e18a3, type: 3}
+      propertyPath: objetivo
+      value: 
+      objectReference: {fileID: 1774785889}
     - target: {fileID: 5449453865547528828, guid: cfbc372fcc9f043439187875500e18a3, type: 3}
       propertyPath: m_Name
       value: Celestial
@@ -16046,6 +16054,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1796587655}
     m_Modifications:
+    - target: {fileID: 2096604960174806829, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_Constraints
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769802055611656717, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: sillazo
+      value: 
+      objectReference: {fileID: 7538891158157606881, guid: 254fa05c445d1e8468445981c38ff971, type: 3}
+    - target: {fileID: 7836362085486981549, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: objetivo
+      value: 
+      objectReference: {fileID: 1774785889}
     - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0465202
@@ -16092,7 +16112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8799662781828506231, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
