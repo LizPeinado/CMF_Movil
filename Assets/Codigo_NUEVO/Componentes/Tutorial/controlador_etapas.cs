@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public enum EtapasTutorial{
     avanzar_retroceder,
@@ -18,6 +19,7 @@ public class ControladorEtapas : MonoBehaviour
 {
     public EtapasTutorial etapa_actual = EtapasTutorial.avanzar_retroceder;
     public TMP_Text caja_dialogos;
+    public Image imagen_dialogos;
     public int contador_boton=1;
 
     public bool esta_en_pausa = false;

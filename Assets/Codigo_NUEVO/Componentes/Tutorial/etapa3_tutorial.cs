@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using Mono.Cecil;
 
 public class Etapa3Tutorial : MonoBehaviour
 {
@@ -57,7 +59,7 @@ public class Etapa3Tutorial : MonoBehaviour
         // MOSTRAR EL MENSAJE CUANDO COMIENZA LA ETAPA
         if(!etapa_iniciada)
         {
-            dialogos_etapa3(controlador_etapas.caja_dialogos);
+            dialogos_etapa3(controlador_etapas.caja_dialogos, controlador_etapas.imagen_dialogos);
 
             if(controlador_etapas.esta_en_pausa)
             {
@@ -186,19 +188,20 @@ public class Etapa3Tutorial : MonoBehaviour
         }
     }
 
-    void dialogos_etapa3(TMP_Text cajita)
+    void dialogos_etapa3(TMP_Text cajita, Image imagen)
     {
         if(cajita == null)
         {
             return;
         }
-
-        cajita.text = "Estamos en la etapa 3, dale en la madre (U - I - O)";
+        imagen.sprite = Resources.Load<Sprite>("Alexis_2");
+        cajita.text = "Ahora viene lo bueno... ¡Golpea el costal! \nUtiliza los botones a la derecha para realizar golpes. \n Cada golpe hace más daño dependiendo del tipo que sea. Intenta hacer un golpe de cada uno.";
     }
 
     IEnumerator esperar_para_siguiente_etapa()
     {
-        controlador_etapas.caja_dialogos.text = "yAy";
+        controlador_etapas.caja_dialogos.text = "¡Eso!";
+        controlador_etapas.imagen_dialogos.sprite = Resources.Load<Sprite>("Alexis_3");
         
         // Esperar para que se pueda observar la secuencia.
         yield return new WaitForSecondsRealtime(tiempo_espera);

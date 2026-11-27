@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Etapa6Tutorial : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class Etapa6Tutorial : MonoBehaviour
         if(!etapa_iniciada)
         {
             etapa_iniciada = true;
-            dialogos_etapa(controlador_etapas.caja_dialogos);
+            dialogos_etapa(controlador_etapas.caja_dialogos, controlador_etapas.imagen_dialogos);
         }
 
         // Esperar a que se presione Entendido.
@@ -73,9 +74,10 @@ public class Etapa6Tutorial : MonoBehaviour
         }
     }
 
-    void dialogos_etapa(TMP_Text cajita)
+    void dialogos_etapa(TMP_Text cajita, Image imagen)
     {
         cajita.text = "Ahora vamos a utilizar un objeto. Recoge el objeto que aparecera en el escenario (agachate) y realiza cualquier ataque para utilizarlo.";
+        imagen.sprite = Resources.Load<Sprite>("Alexis_2");
     }
 
     IEnumerator hacer_caer_objeto()
@@ -111,7 +113,8 @@ public class Etapa6Tutorial : MonoBehaviour
 
     IEnumerator esperar_para_siguiente_etapa()
     {
-        controlador_etapas.caja_dialogos.text = "yAy";
+        controlador_etapas.caja_dialogos.text = "¡VAMOS, SILLAZO!";
+        controlador_etapas.imagen_dialogos.sprite = Resources.Load<Sprite>("Alexis_2");
         //Debug.Log("EL JUGADOR REGRESO DESPUES DE USAR EL OBJETO");
 
         // Esperar para que se pueda observar la secuencia.

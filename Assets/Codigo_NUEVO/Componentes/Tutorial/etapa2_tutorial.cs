@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
 public class Etapa2Tutorial : MonoBehaviour
@@ -41,7 +42,7 @@ public class Etapa2Tutorial : MonoBehaviour
         {
             etapa_iniciada = true;
             controlador_etapas.activar_pausa();
-            dialogos_etapa2(controlador_etapas.caja_dialogos);
+            dialogos_etapa2(controlador_etapas.caja_dialogos, controlador_etapas.imagen_dialogos);
            
             
         }
@@ -93,8 +94,9 @@ public class Etapa2Tutorial : MonoBehaviour
         }
     }
 
-    void dialogos_etapa2(TMP_Text cajita){
-        cajita.text = "Estamos en la etapa 2 chavales. saltale saltale (y agachate)";
+    void dialogos_etapa2(TMP_Text cajita, Image imagen){
+        cajita.text = "Ahora intenta saltar y agacharte. Mueve la palanca izquierda hacia arriba y abajo";
+        imagen.sprite = Resources.Load<Sprite>("Alexis_5");
         if(controlador_etapas.esta_en_pausa == false)
         {
             controlador_etapas.cambiar_etapa(EtapasTutorial.saltar_agacharse);
@@ -104,7 +106,8 @@ public class Etapa2Tutorial : MonoBehaviour
 
     IEnumerator esperar_para_siguiente_etapa()
     {
-        controlador_etapas.caja_dialogos.text = "yAy";
+        controlador_etapas.caja_dialogos.text = "¡Miralo!";
+        controlador_etapas.imagen_dialogos.sprite = Resources.Load<Sprite>("Alexis_3");
         
         // Esperar para que se pueda observar la secuencia.
         yield return new WaitForSecondsRealtime(tiempo_espera);

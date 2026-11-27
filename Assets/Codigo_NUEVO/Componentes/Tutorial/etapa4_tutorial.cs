@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Etapa4Tutorial : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class Etapa4Tutorial : MonoBehaviour
 
         if(!etapa_iniciada)
         {
-            dialogos_etapa3(controlador_etapas.caja_dialogos);
+            dialogos_etapa3(controlador_etapas.caja_dialogos, controlador_etapas.imagen_dialogos);
         }
         comprobar_defensa();
     }
@@ -67,8 +68,9 @@ public class Etapa4Tutorial : MonoBehaviour
             StartCoroutine(esperar_para_siguiente_etapa());
         }
     }
-    void dialogos_etapa3(TMP_Text cajita){
-        cajita.text = "Estamos en la etapa 4, dale pa' atras hasta que pare de golpearte";
+    void dialogos_etapa3(TMP_Text cajita, Image imagen){
+        cajita.text = "Parece que el costal se puso agresivo. Retrocede para defenderte de un golpe.";
+        imagen.sprite = Resources.Load<Sprite>("Alexis_4");
         if(controlador_etapas.esta_en_pausa == false){
             controlador_etapas.cambiar_etapa(EtapasTutorial.defender);
             iniciar_etapa();
@@ -77,7 +79,8 @@ public class Etapa4Tutorial : MonoBehaviour
 
     IEnumerator esperar_para_siguiente_etapa()
     {
-        controlador_etapas.caja_dialogos.text = "yAy";
+        controlador_etapas.caja_dialogos.text = "Genial. ¡Sigues vivo!";
+        controlador_etapas.imagen_dialogos.sprite = Resources.Load<Sprite>("Alexis_3");
         
         // Esperar para que se pueda observar la secuencia.
         yield return new WaitForSecondsRealtime(tiempo_espera);

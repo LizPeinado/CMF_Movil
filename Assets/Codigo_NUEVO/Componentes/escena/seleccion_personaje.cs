@@ -6,11 +6,13 @@ public class seleccion_personaje : MonoBehaviour
 {
     public GameObject[] personajes;
     public TMP_Text TextoVerificador;
-    public int personaje_seleccionado = 0;
+
+    public int personaje_seleccionado;
     public bool EmpezarJuego = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        personaje_seleccionado = 0;
         PlayerPrefs.GetInt("empezar_juego", 0);
         PlayerPrefs.GetInt("personaje_seleccionado", personaje_seleccionado);
         verificar_personaje();
@@ -38,6 +40,7 @@ public class seleccion_personaje : MonoBehaviour
         {
             case 0:
                 TextoVerificador.text = "Se ha seleccionado a Blue Dragon";
+
                 
             break;
             case 1:
@@ -80,4 +83,6 @@ public class seleccion_personaje : MonoBehaviour
             break;
         }
     }
+
+    
 }

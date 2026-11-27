@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Etapa5Tutorial : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class Etapa5Tutorial : MonoBehaviour
 
         if(!etapa_iniciada)
         {
-            dialogos_etapa5(controlador_etapas.caja_dialogos);
+            dialogos_etapa5(controlador_etapas.caja_dialogos, controlador_etapas.imagen_dialogos);
         }
 
         comprobar_defensa();
@@ -105,9 +106,10 @@ public class Etapa5Tutorial : MonoBehaviour
         }
     }
 
-    void dialogos_etapa5(TMP_Text cajita)
+    void dialogos_etapa5(TMP_Text cajita, Image imagen)
     {
-        cajita.text = "Ahora rompe la defensa del enemigo, Si está de pie utiliza un golpe bajo y si está agachado dale en la cabeza";
+        cajita.text = "Ahora rompe la defensa del costal... Si está de pie utiliza un golpe bajo (agachate y ataca) y si está agachado dale en la cabeza";
+        imagen.sprite = Resources.Load<Sprite>("Alexis_5");
 
         if(controlador_etapas.esta_en_pausa == false)
         {
@@ -119,7 +121,9 @@ public class Etapa5Tutorial : MonoBehaviour
     IEnumerator esperar_para_siguiente_etapa()
     {
         controlador_etapas.caja_dialogos.text =
-            "Se rompio la defensa del enemigo.";
+            "Ese costal no se defendera por siempre";
+
+        controlador_etapas.imagen_dialogos.sprite = Resources.Load<Sprite>("Alexis_3");
 
         yield return new WaitForSecondsRealtime(tiempo_espera);
 

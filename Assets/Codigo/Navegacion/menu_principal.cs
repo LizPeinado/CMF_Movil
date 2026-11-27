@@ -28,7 +28,7 @@ public class menu_principal : MonoBehaviour
     }
         
     public void MenuPrincipal(){
-        PlayerPrefs.SetInt("empezar_juego", 1);
+        PlayerPrefs.SetInt("empezar_juego", 0);
         SceneManager.LoadSceneAsync(0);
     }
 
