@@ -8,7 +8,8 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
     private Rigidbody rigid_body;
     private NavMeshAgent control_movimiento;
 
-    public GameObject a_quien_seguir;
+    public GameObject[] quienes_se_pueden_seguir;
+    private GameObject a_quien_seguir;
 
     public bool puede_moverse = false;
     public bool retrocediendo = false;
@@ -24,6 +25,22 @@ public class EnemigoMovimientoNuevo : MonoBehaviour
         animator = GetComponent<Animator>();
         rigid_body = GetComponent<Rigidbody>();
         control_movimiento = GetComponent<NavMeshAgent>();
+
+        switch (PlayerPrefs.GetInt("personaje_seleccionado"))
+        {
+            case 0:
+                a_quien_seguir = quienes_se_pueden_seguir[0];
+            break;
+            case 2:
+                a_quien_seguir = quienes_se_pueden_seguir[1];
+            break;
+            case 3:
+                a_quien_seguir = quienes_se_pueden_seguir[2];
+            break;
+            default:
+                a_quien_seguir = quienes_se_pueden_seguir[0];
+            break;
+        }
 
         if(a_quien_seguir == null)
         {

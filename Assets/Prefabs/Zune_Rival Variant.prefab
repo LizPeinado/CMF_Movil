@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6901560434219934386
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2345406805558331313, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: movimiento_enemigo
+      value: 
+      objectReference: {fileID: 8654378611893706243}
+    - target: {fileID: 2345406805558331313, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: movimiento_jugador
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770353173620820833, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: cadaver
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.3593
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166572046171338957, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799662781828506231, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      propertyPath: m_Name
+      value: Zune_Rival Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6322958444763360236, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+    - {fileID: 977313466223365288, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+    - {fileID: 7769802055611656717, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+    - {fileID: 7447456615196155988, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8799662781828506231, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4986736852775894162}
+    - targetCorrespondingSourceObject: {fileID: 8799662781828506231, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 567041868057915264}
+    - targetCorrespondingSourceObject: {fileID: 8799662781828506231, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8654378611893706243}
+    - targetCorrespondingSourceObject: {fileID: 8799662781828506231, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5965028377853857218}
+    - targetCorrespondingSourceObject: {fileID: 8799662781828506231, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 943451243918066127}
+  m_SourcePrefab: {fileID: 100100000, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+--- !u!1 &2727468384253690053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8799662781828506231, guid: ecc7b72befacde24fa503583a20ce2d7, type: 3}
+  m_PrefabInstance: {fileID: 6901560434219934386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &4986736852775894162
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727468384253690053}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1.8
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &567041868057915264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727468384253690053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9efafdbe118624db27aaa3ed4bd060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cerebro_enemigo
+  estado_actual: 3
+  defender_agachado: 0
+  retroceder_al_defender: 0
+--- !u!114 &8654378611893706243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727468384253690053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3624a832bbae348ba231264f4e25a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemigoMovimientoNuevo
+  a_quien_seguir: {fileID: 0}
+  puede_moverse: 0
+  retrocediendo: 0
+  esta_saltando: 0
+  esta_agachado: 0
+  estado_cubriendose: 0
+  fuerza_salto: 600
+--- !u!114 &5965028377853857218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727468384253690053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50ea21cd8119584687aff15e7a090bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemigoAtaquesNuevo
+  puede_atacar: 1
+  solo_ataque_debil: 0
+  ataque_en_curso: 0
+  "pu\xF1o_izquierdo": {fileID: 0}
+  "pu\xF1o_derecho": {fileID: 0}
+  tiempo_siguiente_ataque: 1
+--- !u!114 &943451243918066127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727468384253690053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1009abf9021e6bb4bad955dff1ba183d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IA_Enemigo
+  categoria: 0
+  salud_baja: 400
+  duracion_defensa: 2
+  tiempo_entre_decisiones: 1
+  tiempo_ataque_salud_baja: 0.6
+  ia_activa: 0
+  salud_jugador: {fileID: 0}
+  duracion_agachado: 1.5
+  probabilidad_golpe_agachado: 50

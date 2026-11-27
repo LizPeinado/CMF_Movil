@@ -6,22 +6,21 @@ using UnityEngine.UI;
 public class PantallaMorido : MonoBehaviour
 {
     public GameObject pantalla_a_mostrar;
-    public Image sprite_personaje;
     public Image ganar_o_perder;
     public bool oponente_es_jugador;
     public Image sprite_ganador;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if(oponente_es_jugador == false)
+        if(oponente_es_jugador == true)
         {
             RevisarSprites(PlayerPrefs.GetInt("personaje_seleccionado"));
             ganar_o_perder.sprite = Resources.Load<Sprite>("VICTORIA");
         }
         else
         {
-            RevisarSprites(2);
-            ganar_o_perder.sprite = Resources.Load<Sprite>("Derrota");
+            RevisarSprites(1);
+            ganar_o_perder.sprite = Resources.Load<Sprite>("DERROTA");
         }
         StartCoroutine(pantallas_espera());  
     }

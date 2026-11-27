@@ -1037,7 +1037,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PantallaMorido
   pantalla_a_mostrar: {fileID: 8890867981285218619}
-  sprite_personaje: {fileID: 0}
+  ganar_o_perder: {fileID: 0}
+  oponente_es_jugador: 1
+  sprite_ganador: {fileID: 0}
 --- !u!1 &7660230468765176015
 GameObject:
   m_ObjectHideFlags: 0

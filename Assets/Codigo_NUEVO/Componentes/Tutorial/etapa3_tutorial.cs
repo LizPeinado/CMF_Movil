@@ -195,7 +195,7 @@ public class Etapa3Tutorial : MonoBehaviour
             return;
         }
         imagen.sprite = Resources.Load<Sprite>("Alexis_2");
-        cajita.text = "Ahora viene lo bueno... ¡Golpea el costal! \nUtiliza los botones a la derecha para realizar golpes. \n Cada golpe hace más daño dependiendo del tipo que sea. Intenta hacer un golpe de cada uno.";
+        cajita.text = "Ahora viene lo bueno... ¡Golpea el costal! \nUtiliza los botones a la derecha para realizar golpes. Cada golpe hace más daño dependiendo del tipo que sea. Intenta hacer un golpe de cada uno.";
     }
 
     IEnumerator esperar_para_siguiente_etapa()
